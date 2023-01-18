@@ -3,6 +3,28 @@
 機械翻訳したものをベースに、少しでも補正して読み易くなれば良いなと考えています。 
 元となるリポジトリへの追従、一貫性のある読み易い翻訳のガイドなど、他のリポジトリを参考にしながら進めたいと思います。
 
+私は以下の方法で[本家](https://github.com/openai/openai-cookbook)に追随しようと考えています（もっと良い方法があると思うので教えて下さい）
+
+1. ローカルリポジトリに以下のブランチを用意
+```
+① 本家リポ追随ブランチ（英語）：pitcher
+② 和訳元ブランチ（英語）      ：batter
+③ 和訳済みブランチ（日本語）  ：master
+```
+2. ①を本家とマージ
+```
+git remote add upstream [本家リポURL]
+git fetch upstream # 本家をフェッチ
+git checkout pitcher #本家とマージしたいブランチをチェックアウト
+git merge upstream/main
+```
+3. ①と②のdiffを確認
+```
+git diff --name-only pitcher batter  #変更されたファイルを確認
+git diff pitcher:[ファイル名] batter:[ファイル名]
+```
+4. diffで確認した差分（英文）を和訳して、③に反映
+
 
 ![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3Daeec6d9c1bae9c8c779ad62ac5b78e8ec479bf78)
 
