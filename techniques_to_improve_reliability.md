@@ -1,574 +1,584 @@
-# Techniques to improve reliability
+# 信頼性を向上させるテクニック
 
-When GPT-3 fails on a task, what should you do?
+GPT-3 がタスクで失敗した場合、どうすればよいですか?
 
-- Search for a better prompt that elicits more reliable answers?
-- Invest in thousands of examples to fine-tune a custom model?
-- Assume the model is incapable of the task, and move on?
+- より信頼性の高い回答を引き出すより良いプロンプトを検索しますか?
+- カスタム モデルを微調整するために何千もの例に投資しますか?
+- モデルがそのタスクを実行できないと仮定して、先に進みますか?
 
-There is no simple answer - it depends. However, if your task involves logical reasoning or complexity, consider trying the techniques in this article to build more reliable, high-performing prompts.
+簡単な答えはありません。状況によります。 ただし、タスクに論理的な推論や複雑さが伴う場合は、この記事の手法を試して、より信頼性が高くパフォーマンスの高いプロンプトを作成することを検討してください。
 
-## Why GPT-3 fails on complex tasks
+## GPT-3 が複雑なタスクで失敗する理由
 
-If you were asked to multiply 13 by 17, would the answer pop immediately into your mind? For most of us, probably not. Yet, that doesn't mean humans are incapable of two-digit multiplication. With a few seconds, and some pen and paper, it's not too taxing to work out that 13 x 17 = 130 + 70 + 21 = 221.
+13 を 17 で掛けるように言われたら、すぐに答えが思い浮かびますか? 私たちのほとんどにとって、おそらくそうではありません。 とはいえ、人間が 2 桁の掛け算ができないわけではありません。 数秒と、ペンと紙があれば、13 x 17 = 130 + 70 + 21 = 221 を計算するのはそれほど難しくありません。
 
-Similarly, if you give GPT-3 a task that's too complex to do in the time it takes to calculate its next token, it may confabulate an incorrect guess. Yet, akin to humans, that doesn't necessarily mean the model is incapable of the task. With some time and space to reason things out, the model still may be able to answer reliably.
+同様に、GPT-3 に、次のトークンを計算するのにかかる時間内に実行するには複雑すぎるタスクを与えると、誤った推測を作成する可能性があります。 それでも、人間と同じように、モデルがそのタスクを実行できないとは限りません。 物事を推論するための時間とスペースがあれば、モデルはまだ確実に答えることができるかもしれません.
 
-As an example, if you ask `text-davinci-002` the following math problem about juggling balls, it answers incorrectly:
+例として、`text-davinci-002` にジャグリング ボールに関する次の数学の問題を尋ねると、間違った答えが返されます。
 
 ```text-davinci-002
-Q: A juggler has 16 balls. Half of the balls are golf balls and half of the golf balls are blue. How many blue golf balls are there?
+Q: ジャグラーは 16 個のボールを持っています。 ボールの半分はゴルフ ボールで、ゴルフ ボールの半分は青色です。 青いゴルフボールは何個ありますか。
 A:
 ```
 
 ```text-davinci-002
-There are 8 blue golf balls.
+青いゴルフボールが8個あります。
 ```
 
-Does this mean that GPT-3 cannot do simple math problems? No; in fact, it turns out that by prompting the model with `Let's think step by step`, the model solves the problem reliably:
+これは、GPT-3 が単純な数学の問題を処理できないことを意味しますか? いいえ; 実際、モデルに「段階的に考えてみましょう」と促すことで、モデルは問題を確実に解決することがわかりました。
 
 ```text-davinci-002
-Q: A juggler has 16 balls. Half of the balls are golf balls and half of the golf balls are blue. How many blue golf balls are there?
-A: Let's think step by step.
+Q: ジャグラーは 16 個のボールを持っています。 ボールの半分はゴルフ ボールで、ゴルフ ボールの半分は青色です。 青いゴルフボールは何個ありますか。
+A: 段階的に考えてみましょう。
 ```
 
 ```text-davinci-002
-There are 16 balls in total. 
-Half of the balls are golf balls. 
-That means that there are 8 golf balls. 
-Half of the golf balls are blue. 
-That means that there are 4 blue golf balls.
+全部で16個のボールがあります。
+ボールの半分はゴルフボールです。
+つまり、ゴルフボールは8個です。
+ゴルフボールの半分は青い。
+つまり、青いゴルフボールが 4 個あるということです。
 ```
 
-Of course, it's hard to tell from only a single example whether this `Let's think step by step` trick actually works in general or just got lucky on this particular problem. But it really does work. On a benchmark of word math problems, the `Let's think step by step` trick raised GPT-3's solve rate massively, from a worthless 18% to a decent 79%!
+もちろん、この「段階的に考えてみましょう」というトリックが実際に一般的に機能するのか、それともこの特定の問題で運が良かっただけなのか、たった 1 つの例から判断するのは困難です。 しかし、それは本当にうまくいきます。 単語の数学の問題のベンチマークでは、「段階的に考えてみましょう」というトリックにより、GPT-3 の解決率が、役に立たない 18% からまともな 79% に大幅に上昇しました。
 
-## Model capabilities depend on context
+## モデルの機能はコンテキストに依存します
 
-When learning to work with GPT-3, one common conceptual mistake is to believe that its capabilities are fixed across all contexts. E.g., if GPT-3 gets a simple logic question wrong, then it must be incapable of simple logic.
+GPT-3 の使用方法を学習する際によくある概念上の間違いの 1 つは、その機能がすべてのコンテキストで固定されていると信じることです。 たとえば、GPT-3 が単純な論理の問題を間違えた場合、GPT-3 は単純な論理ができないはずです。
 
-But as the `Let's think step by step` example illustrates, apparent failures of GPT-3 can sometimes be remedied with a better prompt that helps the model steer itself toward the correct output.
+しかし、「段階的に考えてみましょう」の例が示すように、GPT-3 の明らかな失敗は、モデルが正しい出力に向けて進むのに役立つより良いプロンプトで修正できる場合があります。
 
-## How to improve reliability on complex tasks
+## 複雑なタスクの信頼性を向上させる方法
 
-The rest of this article shares techniques for improving reliability of large language models on complex tasks. Although some of the techniques are specific to certain types of problems, many of them are built upon general principles that can be applied to a wide range of tasks, e.g.:
+この記事の残りの部分では、複雑なタスクで大規模な言語モデルの信頼性を向上させる手法について説明します。 一部の手法は特定のタイプの問題に固有のものですが、それらの多くは幅広いタスクに適用できる一般原則に基づいて構築されています。
 
-- Give clearer instructions
-- Split complex tasks into simpler subtasks
-- Structure the instruction to keep the model on task
-- Prompt the model to explain before answering
-- Ask for justifications of many possible answers, and then synthesize
-- Generate many outputs, and then use the model to pick the best one
-- Fine-tune custom models to maximize performance
+- より明確な指示を与える
+- 複雑なタスクをより単純なサブタスクに分割
+- モデルの作業を継続するための指示を構造化する
+- 答える前にモデルに説明を促す
+- 多くの考えられる答えの正当性を尋ね、それから統合する
+- 多くの出力を生成し、モデルを使用して最適なものを選択します
+- カスタムモデルを微調整してパフォーマンスを最大化
 
-## Split complex tasks into simpler tasks
+## 複雑なタスクをより単純なタスクに分割する
 
-One way to give a model more time and space to think is to break tasks into simpler pieces.
+モデルに考える時間と空間を与える 1 つの方法は、タスクをより単純な部分に分割することです。
 
-As an example, consider a task where we ask the model a multiple-choice question about some text - in this case, a game of Clue. When asked directly, `text-davinci-002` isn't able to put clues 3 & 5 together, and answers incorrectly:
+例として、あるテキストについて多肢選択式の質問をモデルに行うタスクを考えてみましょう。この場合は手がかりのゲームです。 直接尋ねると、`text-davinci-002` は手がかり 3 と 5 を組み合わせることができず、間違って答えます。
  
 ```text-davinci-002
-Use the following clues to answer the following multiple-choice question.
+次の手がかりを使用して、次の複数選択問題に答えてください。
  
-Clues:
-1. Miss Scarlett was the only person in the lounge.
-2. The person with the pipe was in the kitchen.
-3. Colonel Mustard was the only person in the observatory.
-4. Professor Plum was not in the library nor the billiard room.
-5. The person with the candlestick was in the observatory.
+手がかり:
+1. ラウンジにはミス・スカーレットしかいなかった。
+2. パイプを持った人は台所にいました。
+3. 天文台にいたのはマスタード大佐だけだった。
+4. プラム教授は図書室にもビリヤード室にもいませんでした。
+5. ローソク足を持っている人は天文台にいました。
  
-Question: Was Colonel Mustard in the observatory with the candlestick?
-(a) Yes; Colonel Mustard was in the observatory with the candlestick
-(b) No; Colonel Mustard was not in the observatory with the candlestick
-(c) Unknown; there is not enough information to determine whether Colonel Mustard was in the observatory with the candlestick
+質問: マスタード大佐は燭台を持って天文台にいましたか?
+(a) はい; マスタード大佐は燭台を持って天文台にいた
+(b) いいえ。 マスタード大佐はローソク足を持って天文台にいなかった
+(c) 不明。 マスタード大佐がローソク足を持って天文台にいたかどうかを判断するのに十分な情報がない.
  
-Solution:
-```
- 
-```text-davinci-002
-(c) Unknown; there is not enough information to determine whether Colonel Mustard was in the observatory with the candlestick
-```
- 
-Although clues 3 and 5 establish that Colonel Mustard was the only person in the observatory and that the person in the observatory had the candlestick, the models fails to combine them into a correct answer of (a) Yes.
- 
-However, instead of asking for the answer directly, we can split the task into three pieces:
- 
-- First, go through the clues one by one and and consider whether the clue is potentially relevant
-- Second, combine the relevant clues to reason out the answer to the question
-- Third, write the final answer: either (a), (b), or (c)
- 
-```text-davinci-002
-Use the following clues to answer the following multiple-choice question, using the following procedure:
-(1) First, go through the clues one by one and and consider whether the clue is potentially relevant
-(2) Second, combine the relevant clues to reason out the answer to the question
-(3) Third, map the answer to one of the multiple choice answers: either (a), (b), or (c)
- 
-Clues:
-1. Miss Scarlett was the only person in the lounge.
-2. The person with the pipe was in the kitchen.
-3. Colonel Mustard was the only person in the observatory.
-4. Professor Plum was not in the library nor the billiard room.
-5. The person with the candlestick was in the observatory.
- 
-Question: Was Colonel Mustard in the observatory with the candlestick?
-(a) Yes; Colonel Mustard was in the observatory with the candlestick
-(b) No; Colonel Mustard was not in the observatory with the candlestick
-(c) Unknown; there is not enough information to determine whether Colonel Mustard was in the observatory with the candlestick
- 
-Solution:
-(1) First, go through the clues one by one and and consider whether the clue is potentially relevant:
+解決：
 ```
  
 ```text-davinci-002
-Clue 1: Miss Scarlett was the only person in the lounge. This clue is not relevant.
-Clue 2: The person with the pipe was in the kitchen. This clue is not relevant.
-Clue 3: Colonel Mustard was the only person in the observatory. This clue is relevant.
-Clue 4: Professor Plum was not in the library nor the billiard room. This clue is not relevant.
-Clue 5: The person with the candlestick was in the observatory. This clue is relevant.
+(c) 不明。 マスタード大佐がローソク足を持って天文台にいたかどうかを判断するのに十分な情報がない.
+```
+
+手がかり 3 と 5 は、マスタード大佐が天文台にいた唯一の人物であり、天文台にいた人物がローソク足を持っていたことを立証していますが、
+モデルはそれらを (a) はいの正しい答えに組み合わせることができません。
  
-(2) Second, combine the relevant clues to reason out the answer to the question:
-Clue 3 and Clue 5 both say that the person with the candlestick was in the observatory. Colonel Mustard was the only person in the observatory, so Colonel Mustard was the person with the candlestick.
+ただし、直接答えを求める代わりに、タスクを 3 つの部分に分割できます。
  
-(3) Third, write the final answer:
-(a) Yes; Colonel Mustard was in the observatory with the candlestick
+- まず、手がかりを 1 つずつ調べて、手がかりが潜在的に関連しているかどうかを検討します
+- 次に、関連する手がかりを組み合わせて、質問に対する答えを導き出します
+- 第三に、最終的な答えを書きます: (a)、(b)、または (c) のいずれか
+ 
+```text-davinci-002
+次の手がかりを使用して、次の手順を使用して、次の複数選択問題に答えてください。
+(1) まず、手がかりを一つ一つ見ていき、その手がかりが潜在的に関連性があるかどうかを検討する
+(2) 次に、関連する手がかりを組み合わせて、質問に対する答えを導き出します
+(3) 3 番目に、(a)、(b)、または (c) のいずれかの多肢選択式の回答のいずれかに回答をマッピングします。
+ 
+手がかり:
+1. ラウンジにはミス・スカーレットしかいなかった。
+2. パイプを持った人は台所にいました。
+3. 天文台にいたのはマスタード大佐だけだった。
+4. プラム教授は図書室にもビリヤード室にもいませんでした。
+5. ローソク足を持っている人は天文台にいました。
+ 
+質問: マスタード大佐は燭台を持って天文台にいましたか?
+(a) はい; マスタード大佐は燭台を持って天文台にいた
+(b) いいえ。 マスタード大佐はローソク足を持って天文台にいなかった
+(c) 不明。 マスタード大佐がローソク足を持って天文台にいたかどうかを判断するのに十分な情報がない.
+ 
+解決：
+(1) まず、手がかりを 1 つずつ調べて、手がかりが潜在的に関連するかどうかを検討します。
 ```
  
-By giving the model more time and space to think, and guiding it along a reasoning plan, it's able to figure out the correct answer of (a) Yes.
+```text-davinci-002
+手がかり 1: ラウンジにはミス・スカーレットしかいませんでした。 この手がかりは関係ありません。
+手がかり 2: パイプを持っている人はキッチンにいました。 この手がかりは関係ありません。
+手がかり 3: マスタード大佐は天文台にいる唯一の人物でした。 この手がかりは関連しています。
+手がかり 4: プラム教授は図書館にもビリヤード室にもいませんでした。 この手がかりは関係ありません。
+手がかり 5: ローソク足を持っている人は天文台にいました。 この手がかりは関連しています。
+ 
+(2) 次に、関連する手がかりを組み合わせて、質問に対する答えを導き出します。
+手がかり 3 と手がかり 5 はどちらも、ローソク足を持っている人が天文台にいたことを示しています。 天文台にいるのはマスタード大佐だけだったので、ロウソク足を持っていたのはマスタード大佐だった。
+ 
+(3) 第三に、最終的な答えを書きます。
+(a) はい; マスタード大佐は燭台を持って天文台にいた
+```
+ 
+モデルに考える時間と空間を与え、推論計画に沿ってモデルを導くことで、(a) はいの正しい答えを導き出すことができます。
 
-Another benefit of splitting complex instructions into smaller subtasks is that it can help keep the model focused on each subtask.
+複雑な命令を小さなサブタスクに分割するもう 1 つの利点は、モデルを各サブタスクに集中させ続けるのに役立つことです。
 
-For example, if we ask `text-davinci-002` to summarize a text in its original language, the model can lapse back into English:
+たとえば、`text-davinci-002` にテキストを元の言語で要約するように依頼すると、モデルは英語に戻る可能性があります。
 
 ```text-davinci-002
-Summarize the text using the original language of the text. The summary should be one sentence long.
+テキストの元の言語を使用してテキストを要約します。 要約は 1 文の長さにする必要があります。
 
-Text:
+文章：
 """
-La estadística (la forma femenina del término alemán Statistik, derivado a su vez del italiano statista, "hombre de Estado")​ es una ciencia que estudia la variabilidad, colección, organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.​ La estadística es una ciencia formal deductiva, con un conocimiento propio, dinámico y en continuo desarrollo obtenido a través del método científico formal. En ocasiones, las ciencias fácticas necesitan utilizar técnicas estadísticas durante su proceso de investigación factual, con el fin de obtener nuevos conocimientos basados en la experimentación y en la observación. En estos casos, la aplicación de la estadística permite el análisis de datos provenientes de una muestra representativa, que busca explicar las correlaciones y dependencias de un fenómeno físico o natural, de ocurrencia en forma aleatoria o condicional.
-"""
-
-Summary:
-```
-
-```text-davinci-002
-The text explains that statistics is a science that studies the variability, collection, organization, analysis, interpretation, and presentation of data, as well as the random process that generates them following the laws of probability.
- ```
-
- However, if we first ask the model to identify the language of the text, and then summarize the text, it becomes more reliable:
-
-```text-davinci-002
-First, identify the language of the text. Second, summarize the text using the original language of the text. The summary should be one sentence long.
-
-Text:
-"""
-La estadística (la forma femenina del término alemán Statistik, derivado a su vez del italiano statista, "hombre de Estado")​ es una ciencia que estudia la variabilidad, colección, organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.​ La estadística es una ciencia formal deductiva, con un conocimiento propio, dinámico y en continuo desarrollo obtenido a través del método científico formal. En ocasiones, las ciencias fácticas necesitan utilizar técnicas estadísticas durante su proceso de investigación factual, con el fin de obtener nuevos conocimientos basados en la experimentación y en la observación. En estos casos, la aplicación de la estadística permite el análisis de datos provenientes de una muestra representativa, que busca explicar las correlaciones y dependencias de un fenómeno físico o natural, de ocurrencia en forma aleatoria o condicional.
+La estadística (la forma femenina del termino alemán Statistik, derivado a su vez del italiano statista, "hombre de Estado") es una ciencia que estudia la variabilidad, colección, organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que los general siguiendo las leyes de la probabilidad. La estadística es una ciencia form deductiva, con un conocimiento propio, dinámico y en continuo desarrollo obtenido a través del método científico form. 必要に応じて、事実を利用するために必要な技術を確立し、事実を調査するためのプロセスを調査し、実験と観察のために新しい情報を得ることができます。 En estos casos, la aplicación de la estadística permite el análisis de datosprovinientes de una muestra Representativeativa, que busca explicar las correlaciones ydependencias de un fenómeno físico o natural, de ocurrencia en forma aleatoria o condicional.
 """
 
-Language:
+概要：
 ```
 
 ```text-davinci-002
-Spanish
+このテキストでは、統計はデータの変動性、収集、編成、分析、解釈、提示、および確率の法則に従ってデータを生成するランダムなプロセスを研究する科学であると説明しています。
+  ```
 
-La estadística es una ciencia que estudia la variabilidad, colección, organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que los genera siguiendo las leyes de la probabilidad.
-```
-
-## Prompt the model to explain before answering
-
-Another powerful technique for improving the reliability of answers is to prompt the model to gradually reason out the answer rather than jumping immediately to the final answer. By 'thinking aloud' the model can be far more likely to arrive at the correct answer.
-
-### Zero-shot
-
-#### Method
-
-Published by [Takeshi Kojima et al. in 2022](https://arxiv.org/abs/2205.11916), the easiest way to prompt a model to reason out the answer is to simply prepend answers with `Let's think step by step.` Figure 2 illustrates an example:
-
-[![zero-shot reasoning example](images/zero-shot_reasoners_fig2.png)
-<br>Source: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
-
-#### Results
-
-Applying this simple trick to the MultiArith math dataset, the authors found `Let's think step by step` quadrupled the accuracy, from 18% to 79%!
-
-[![zero-shot reasoning example](images/zero-shot_reasoners_tab5.png)
-<br>Source: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
-
-#### Implications
-
-Although the `Let's think step by step` trick works well on math problems, it's not effective on all tasks. The authors found that it was most helpful for multi-step arithmetic problems, symbolic reasoning problems, strategy problems, and other reasoning problems. It didn't help with simple math problems or common sense questions, and presumably wouldn't help with many other non-reasoning tasks either.
-
-[![zero-shot reasoning example](images/zero-shot_reasoners_tab1.png)
-<br>Source: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
-
-To learn more, read the [full paper](https://arxiv.org/abs/2205.11916).
-
-If you apply this technique to your own tasks, don't be afraid to experiment with customizing the instruction. `Let's think step by step` is rather generic, so you may find better performance with instructions that hew to a stricter format customized to your use case. For example, if you were  you can try more structured variants like `First, think step by step about why X might be true. Second, think step by step about why Y might be true. Third, think step by step about whether X or Y makes more sense.`. And you can even give the model an example format to help keep it on track, e.g.:
+  ただし、最初にモデルにテキストの言語を識別してからテキストを要約するように依頼すると、より信頼性が高くなります。
 
 ```text-davinci-002
-Using the IRS guidance below, answer the following questions using this format:
-(1) For each criterion, determine whether it is met by the vehicle purchase
-- {Criterion} Let's think step by step. {explanation} {yes or no, or if the question does not apply then N/A}.
-(2) After considering each criterion in turn, phrase the final answer as "Because of {reasons}, the answer is likely {yes or no}."
+まず、テキストの言語を識別します。 次に、テキストの元の言語を使用してテキストを要約します。 要約は 1 文の長さにする必要があります。
 
-IRS guidance:
+文章：
 """
-You may be eligible for a federal tax credit under Section 30D if you purchased a car or truck that meets the following criteria:
-- Does the vehicle have at least four wheels?
-- Does the vehicle weigh less than 14,000 pounds?
-- Does the vehicle draw energy from a battery with at least 4 kilowatt hours that may be recharged from an external source?
-- Was the vehicle purchased in a year before 2022?
-  - If so, has the manufacturer sold less than 200,000 qualifying vehicles? (Tesla and GM have sold more than 200,000 qualifying vehicles.)
-- Was the vehicle purchased in a year after 2022?
-  - If so, is the vehicle present in the following list of North American-assembled vehicles? (The only electric vehicles assembled in North America are the Audi Q5, BMW 330e, BMW X5, Chevrolet Bolt EUV, Chevrolet Bolt EV, Chrysler Pacifica PHEV, Ford Escape PHEV, Ford F Series, Ford Mustang MACH E, Ford Transit Van, GMC Hummer Pickup, GMC Hummer SUV, Jeep Grand Cherokee PHEV, Jeep Wrangler PHEV, Lincoln Aviator PHEV, Lincoln Corsair Plug-in, Lucid Air, Nissan Leaf, Rivian EDV, Rivian R1S, Rivian R1T, Tesla Model 3, Tesla Model S, Tesla Model X, Tesla Model Y, Volvo S60, BMW 330e, Bolt EV, Cadillac Lyriq, Mercedes EQS SUV, and Nissan Leaf.)
+La estadística (la forma femenina del termino alemán Statistik, derivado a su vez del italiano statista, "hombre de Estado") es una ciencia que estudia la variabilidad, colección, organización, análisis, interpretación, y presentación de los datos, así como el proceso aleatorio que los general siguiendo las leyes de la probabilidad. La estadística es una ciencia form deductiva, con un conocimiento propio, dinámico y en continuo desarrollo obtenido a través del método científico form. 場合によっては、ラ
+
+事実科学は、実験と観察に基づいて新しい知識を得るために、事実調査プロセス中に統計的手法を使用する必要があります。 これらの場合、統計の適用により、ランダムまたは条件付き発生の物理的または自然現象の相関関係と依存関係を説明しようとする代表的なサンプルからのデータの分析が可能になります。
 """
 
-Question: Can I claim a federal tax credit for my Toyota Prius Prime bought in 2021?
-
-Solution:
-
-(1) For each criterion, determine whether it is met by the vehicle purchase
-- Does the vehicle have at least four wheels? Let's think step by step.
+言語：
 ```
 
 ```text-davinci-002
- The Toyota Prius Prime has four wheels, so the answer is yes.
-- Does the vehicle weigh less than 14,000 pounds? Let's think step by step. The Toyota Prius Prime weighs less than 14,000 pounds, so the answer is yes.
-- Does the vehicle draw energy from a battery with at least 4 kilowatt hours that may be recharged from an external source? Let's think step by step. The Toyota Prius Prime has a battery with at least 4 kilowatt hours that may be recharged from an external source, so the answer is yes.
-- Was the vehicle purchased in a year before 2022? Let's think step by step. The Toyota Prius Prime was purchased in 2021, which is before 2022, so the answer is yes.
-- Was the vehicle purchased in a year after 2022? N/A
-- If so, is the vehicle present in the following list of North American-assembled vehicles? N/A
+英語
 
-(2) After considering each criterion in turn, phrase the final answer as "Because of {reasons}, the answer is likely {yes or no}."
-
-Because the Toyota Prius Prime meets all of the criteria for a federal tax credit, the answer is likely yes.
+統計学は、データの変動性、収集、編成、分析、解釈、提示、および確率の法則に従ってデータを生成するランダムなプロセスを研究する科学です。
 ```
 
-### Few-shot examples
+## 答える前にモデルに説明を促す
 
-#### Method
+回答の信頼性を向上させるためのもう 1 つの強力な手法は、最終的な回答にすぐにジャンプするのではなく、モデルに徐々に回答を推論させることです。 「声に出して考える」ことで、モデルが正しい答えに到達する可能性がはるかに高くなります。
 
-Prompting the model to reason out its answers can be done in many ways. One way is to demonstrate with a few examples ('few-shot'), as studied by [Jason Wei and Denny Zhou et al. from Google](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html). Here's an example few-shot chain-of-thought prompt:
+### ゼロショット
 
-[![chain of thought example](images/chain_of_thought_fig1.png)
-<br>Source: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei and Denny Zhou et al. (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
+#### 方法
 
-More demonstrations of reasoning chains written by human labelers:
+Published by [Takeshi Kojima et al. in 2022](https://arxiv.org/abs/2205.11916), モデルに答えを推論させる最も簡単な方法は、答えの前に「段階的に考えてみましょう」を単純に追加することです。図 2 に例を示します:
 
-[![chain of thought example](images/chain_of_thought_fig3.png)
-<br>Source: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei and Denny Zhou et al. (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
+[![ゼロショット推論の例](images/zero-shot_reasoners_tab5.png)
+<br>出典: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
 
-[(Note that it has been called into question whether pears actually float)](https://twitter.com/Meaningness/status/1561062170074370048?s=20&t=mpHt8f3RRboztXxdhLFnWQ)
+#### 結果
 
-#### Results
+この単純なトリックを MultiArith 数学データセットに適用したところ、著者は「段階的に考えてみましょう」が精度を 18% から 79% へと 4 倍にしたことを発見しました!
 
-Testing on grade school math problems, the authors found that chain of thought prompting tripled the solve rate, from 18% to 57%.
+[![ゼロショット推論の例](images/zero-shot_reasoners_tab5.png)
+<br>出典: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
 
-[![chain of thought example](images/chain_of_thought_fig5.png)
-<br>Source: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei and Denny Zhou et al. (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
+#### 含意
 
-In addition to math problems, chain of thought prompting also lifted performance on questions related to sports understanding, coin flip tracking, and last letter concatenation. In most cases, not many examples were need to saturate the performance gains (less than 8 or so).
+「段階的に考えよう」というトリックは、数学の問題には有効ですが、すべてのタスクに有効というわけではありません。 著者は、多段階算術問題、記号推論問題、戦略問題、およびその他の推論問題に最も役立つことを発見しました。 単純な数学の問題や常識の問題には役に立ちませんでした。おそらく、他の多くの非論理的なタスクにも役に立たなかったでしょう。
 
-[![chain of thought example](images/chain_of_thought_fig11.png)
-<br>Source: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei and Denny Zhou et al. (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
+[![ゼロショット推論の例](images/zero-shot_reasoners_tab5.png)
+<br>出典: *Large Language Models are Zero-Shot Reasoners* by Takeshi Kojima et al. (2022).](https://arxiv.org/abs/2205.11916)
 
-To learn more, read the [full paper](https://arxiv.org/abs/2201.11903).
+詳細については、[論文全文](https://arxiv.org/abs/2205.11916)をお読みください。
 
-#### Implications
+この手法を自分のタスクに適用する場合は、命令をカスタマイズして試すことを恐れないでください。 `Let's think step by step` はどちらかというと一般的なものなので、ユース ケースに合わせてカスタマイズされたより厳密な形式に準拠する命令を使用すると、パフォーマンスが向上する場合があります。 たとえば、「まず、X が真である理由を段階的に考えてみてください。 次に、Y が真である理由を段階的に考えます。 第三に、X と Y のどちらがより理にかなっているのかを段階的に考えてください。 また、モデルを軌道に乗せるのに役立つサンプル形式をモデルに与えることもできます。
 
-One advantage of the few-shot example-based approach relative to the `Let's think step by step` technique is that you can more easily specify the format, length, and style of reasoning that you want the model to perform before landing on its final answer. This can be be particularly helpful in cases where the model isn't initially reasoning in the right way or depth.
+```text-davinci-002
+以下の IRS ガイダンスを使用して、次の形式を使用して次の質問に答えてください。
+(1) 各基準について、車両の購入によって満たされているかどうかを判断します
+- {基準} 段階的に考えてみましょう。 {説明} {はいまたはいいえ、または質問が該当しない場合は N/A}。
+(2) 各基準を順番に検討した後、最終的な答えを「{理由} により、答えは {はいまたはいいえ} である可能性が高い」と表現します。
 
-### Fine-tuned
+IRS ガイダンス:
+"""
+次の基準を満たす車またはトラックを購入した場合、セクション 30D に基づく連邦税額控除の対象となる場合があります。
+- 車両には少なくとも 4 つの車輪がありますか?
+- 車両の重量は 14,000 ポンド未満ですか?
+- 車両は、外部電源から再充電できる少なくとも 4 キロワット時のバッテリーからエネルギーを引き出しますか?
+- 車両は 2022 年より前の年に購入されましたか?
+   - もしそうなら、製造業者は 200,000 未満の適格な車両を販売しましたか? (Tesla と GM は 200,000 台以上の対象車両を販売しています。)
+- 車両は 2022 年以降に購入されましたか?
+   - もしそうなら、その車両は北米で組み立てられた車両の以下のリストにありますか? (北米で組み立てられている唯一の電気自動車は、アウディ Q5、BMW 330e、BMW X5、シボレー ボルト EUV、シボレー ボルト EV、クライスラー パシフィカ PHEV、フォード エスケープ PHEV、フォード F シリーズ、フォード マスタング マッハ E、フォード トランジット バン、GMC です。ハマー ピックアップ、GMC ハマー SUV、ジープ グランド チェロキー PHEV、ジープ ラングラー PHEV、リンカーン アビエイター PHEV、リンカーン コルセア プラグイン、ルシッド エア、日産リーフ、リビアン EDV、リビアン R1S、リビアン R1T、テスラ モデル 3、テスラ モデル S、テスラModel X、Tesla Model Y、Volvo S60、BMW 330e、Bolt EV、Cadillac Lyriq、Mercedes EQS SUV、Nissan Leaf)。
+"""
 
-#### Method
+質問: 2021 年に購入したトヨタ プリウス プライムの連邦税額控除を請求できますか?
 
-In general, to eke out maximum performance on a task, you'll need to fine-tune a custom model. However, fine-tuning a model using explanations may take thousands of example explanations, which are costly to write.
+解決：
 
-In 2022, Eric Zelikman and Yuhuai Wu et al. published a clever procedure for using a few-shot prompt to generate a dataset of explanations that could be used to fine-tune a model. The idea is to use a few-shot prompt to generate candidate explanations, and only keep the explanations that produce the correct answer. Then, to get additional explanations for some of the incorrect answers, retry the the few-shot prompt but with correct answers given as part of the question. The authors called their procedure STaR (Self-taught Reasoner):
+(1) 各基準について、車両が満たしているかどうかを判断する
 
-[![STaR procedure](images/star_fig1.png)
-<br>Source: *STaR: Bootstrapping Reasoning With Reasoning* by Eric Zelikman and Yujuai Wu et al. (2022)](https://arxiv.org/abs/2203.14465)
+アイクル購入
+- 車両には少なくとも 4 つの車輪がありますか? 一歩一歩考えてみましょう。
+```
 
-With this technique, you can combine the benefits of fine-tuning with the benefits of chain-of-thought prompting without needing to write thousands of example explanations.
+```text-davinci-002
+  トヨタ プリウス プライムは 4 輪なので、答えはイエスです。
+- 車両の重量は 14,000 ポンド未満ですか? 一歩一歩考えてみましょう。 トヨタ プリウス プライムの重量は 14,000 ポンド未満なので、答えはイエスです。
+- 車両は、外部電源から再充電できる少なくとも 4 キロワット時のバッテリーからエネルギーを引き出しますか? 一歩一歩考えてみましょう。 トヨタ プリウス プライムには、外部電源から再充電できる少なくとも 4 キロワット時のバッテリーが搭載されているため、答えはイエスです。
+- 車両は 2022 年より前の年に購入されましたか? 一歩一歩考えてみましょう。 トヨタ プリウス プライムは 2022 年より前の 2021 年に購入されたので、答えはイエスです。
+- 車両は 2022 年以降に購入されましたか? なし
+- もしそうなら、その車両は北米で組み立てられた車両の以下のリストにありますか? なし
 
-#### Results
+(2) 各基準を順番に検討した後、最終的な答えを「{理由} により、答えは {はいまたはいいえ} である可能性が高い」と表現します。
 
-When the authors applied this technique to a Common Sense Q&A dataset, they found that STaR outperformed both chain-of-thought prompting alone (73% > 37%) and fine-tuning alone (73% > 60%):
+トヨタ プリウス プライムは、連邦税額控除のすべての基準を満たしているため、答えはおそらくイエスです。
+```
 
-[![STaR results](images/star_tab1.png)
-<br>Source: *STaR: Bootstrapping Reasoning With Reasoning* by Eric Zelikman and Yujuai Wu et al. (2022)](https://arxiv.org/abs/2203.14465)
+### いくつかの例
 
-To learn more, read the [full paper](https://arxiv.org/abs/2203.14465).
+#### 方法
 
-#### Implications
+モデルに答えを導き出すよう促すには、さまざまな方法があります。 [Jason Wei and Denny Zhou et al. Google から](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)。 以下は、数ショットの一連の思考プロンプトの例です。
 
-Using a few-shot prompt to extend or modify a fine-tuning dataset is an idea that can be generalized beyond explanation writing. For example, if you have large quantities of unstructured text that you want to train on, you may find opportunities to use a prompt to extract a structured dataset from your unstructured text, and then fine-tune a custom model on that structured dataset.
+[![思考の連鎖の例](images/chain_of_thought_fig1.png)
+<br>出典: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei と Denny Zhou 他。 (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
 
-## Extensions to chain-of-thought prompting
+人間のラベラーによって書かれた推論チェーンのその他のデモンストレーション:
 
-A number of extensions of chain-of-thought prompting have been published as well.
+[![思考の連鎖の例](images/chain_of_thought_fig3.png)
+<br>出典: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei と Denny Zhou 他。 (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
 
-### Selection-inference prompting
+[(梨が実際に浮くかどうかは疑問視されていることに注意してください)](https://twitter.com/Meaningness/status/1561062170074370048?s=20&t=mpHt8f3RRboztXxdhLFnWQ)
 
-#### Method
+#### 結果
 
-Published by Antonia Creswell et al., one extension of the chain-of-thought technique is to split the single prompt for generating explanations and answers into smaller parts. First, a prompt selects a relevant subset of facts from the text ('selection prompt'). Then, a second prompt infers a conclusion from the selected facts ('inference prompt'). These prompts are then alternated in a loop to generate multiple steps of reasoning and eventually land on a final answer. The authors illustrate the idea in the following figure:
+小学校の数学の問題をテストしたところ、思考の連鎖を促すことで、解決率が 18% から 57% へと 3 倍になったことがわかりました。
 
-[![Selection-inference prompting](images/selection-inference_fig1.png)
-<br>Source: *Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2205.09712)
+[![思考の連鎖の例](images/chain_of_thought_fig5.png)
+<br>出典: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei と Denny Zhou 他。 (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
 
-#### Results
+数学の問題に加えて、一連の思考を促すことで、スポーツの理解、コイントスの追跡、最後の文字の連結に関する質問のパフォーマンスも向上しました。 ほとんどの場合、パフォーマンスの向上を飽和させるために必要な例は多くありません (8 程度未満)。
 
-When applied to a 7B-parameter model, the authors found that selection-inference prompting substantially improved performance relative to chain-of-thought prompting on the bAbi and Proof Writer benchmark tasks (both of which require longer sequences of reasoning steps). The best performance they achieved combined both selection-inference prompting with fine-tuning.
+[![思考の連鎖の例](images/chain_of_thought_fig11.png)
+<br>出典: *Chain of Thought Prompting Elicits Reasoning in Large Language Models* Jason Wei と Denny Zhou 他。 (2022)](https://ai.googleblog.com/2022/05/language-models-perform-reasoning-via.html)
 
-[![Selection-inference prompting](images/selection-inference_fig4.png)
-<br>Source: *Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2205.09712)
+詳細については、[論文全文](https://arxiv.org/abs/2201.11903)をお読みください。
 
-#### Implications
+#### 含意
 
-Although the gains on these benchmarks were large, these benchmarks were specifically chosen because they required longer sequences of reasoning. On problems that don't require reasoning with many steps, the gains are likely smaller.
+「Let's think step by step」手法に比べて少数ショットの例ベースのアプローチの利点の 1 つは、最終段階に到達する前にモデルに実行させたい推論の形式、長さ、スタイルをより簡単に指定できることです。 答え。 これは、モデルが最初に正しい方法や深さで推論していない場合に特に役立ちます。
 
-The results highlight a couple of general lessons for working with large language models. One, splitting up complex tasks into smaller tasks is a great way to improve reliability and performance; the more atomic the task, the less room there is for the model to err. Two, getting maximum performance often means combining fine-tuning with whatever approach you've chosen.
+### 微調整
 
-To learn more, read the [full paper](https://arxiv.org/abs/2205.09712).
+#### 方法
 
-### Faithful reasoning architecture
+一般に、タスクで最大のパフォーマンスを引き出すには、カスタム モデルを微調整する必要があります。 ただし、説明を使用してモデルを微調整するには、何千もの説明例が必要になる場合があり、これを記述するにはコストがかかります。
 
-A few months after publishing the selection-inference prompting technique, the authors extended the technique in a follow-up paper, with ideas for:
+2022 年、Eric Zelikman と Yuhuai Wu ら。 モデルを微調整するために使用できる説明のデータセットを生成するために、数ショット プロンプトを使用する巧妙な手順を公開しました。 アイデアは、少数のプロンプトを使用して候補の説明を生成し、正しい答えを生成する説明のみを保持することです。 次に、いくつかの不正解に対する追加の説明を得るために、問題の一部として正しい答えを指定して、数回入力プロンプトを再試行します。 著者は、彼らの手順を STAR (Self-taught Reasoner) と呼んでいます。
 
-- figuring out when the selection-inference cycle should stop or continue
-- adding a value function to help search over multiple reasoning paths
-- reducing hallucination of fake facts by fine-tuning a model to reason about sentence labels (e.g., sen1) rather than writing out the sentences themselves
+[![スター手順](images/star_fig1.png)
+<br>ソース: *STAR: Bootstrapping Reasoning With Reasoning* by Eric Zelikman および Yujuai Wu ら。 (2022)](https://arxiv.org/abs/2203.14465)
 
-#### Method
+この手法を使用すると、微調整の利点と一連の思考プロンプトの利点を組み合わせることができ、何千もの説明例を書く必要はありません。
 
-In the original selection-inference technique, specialized 'selection' and 'inference' prompts are alternated to select facts and make inferences from those facts, combining to generate a sequence of reasoning steps.
+#### 結果
 
-The authors extend this technique with two additional components.
+著者がこの手法を Common Sense Q&A データセットに適用したところ、STaR が両方の一連のチェーンよりも優れていることがわかりました。
 
-First, the authors add a 'halter' model that, after each inference step, is asked whether the inferences thus far are sufficient to answer the question. If yes, then the model generates a final answer.
+ht プロンプトのみ (73% > 37%) および微調整のみ (73% > 60%):
 
-The halter models brings a couple of advantages:
+[![スター結果](images/star_tab1.png)
+<br>ソース: *STAR: Bootstrapping Reasoning With Reasoning* by Eric Zelikman および Yujuai Wu ら。 (2022)](https://arxiv.org/abs/2203.14465)
 
-- it can tell the selection-inference process to stop or keep going, as necessary.
-- if the process never halts, you'll get no answer, which is often preferrable to a hallucinated guess
+詳細については、[論文全文](https://arxiv.org/abs/2203.14465)をお読みください。
 
-[![Faithful reasoning](images/faithful-reasoning_fig3.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+#### 含意
 
-[![Faithful reasoning](images/faithful-reasoning_fig5.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+数ショット プロンプトを使用して微調整データセットを拡張または変更することは、説明の記述を超えて一般化できるアイデアです。 たとえば、トレーニングする非構造化テキストが大量にある場合、プロンプトを使用して非構造化テキストから構造化データセットを抽出し、その構造化データセットでカスタム モデルを微調整する機会を見つけることができます。
 
-Second, the authors add a value function, which is used to assess the quality of reasoning steps and search over multiple reasoning trajectories. This echoes a common theme for increasing reliability; instead of generating a single answer from the model, generate a set of answers and then use some type of value function / discriminator / verifier model to pick the best one.
+## 思考連鎖プロンプトの拡張
 
-[![Faithful reasoning](images/faithful-reasoning_fig7.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+一連の思考プロンプトの拡張機能も多数公開されています。
 
-In addition to these two extensions, the authors also use a trick to reduce hallucination of fake facts. Rather than asking the model to write out factual sentences, they fine-tune a model to work with sentence labels (e.g., sen1) instead. This helps prevent the model from hallucinating fake facts not mentioned in the prompt context.
+### 選択推論プロンプト
 
-[![Faithful reasoning](images/faithful-reasoning_fig4.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+#### 方法
 
-#### Results
+Antonia Creswell らによって発表された、思考連鎖手法の 1 つの拡張は、説明と回答を生成するための単一のプロンプトを小さな部分に分割することです。 最初に、プロンプトがテキストから関連する事実のサブセットを選択します (「選択プロンプト」)。 次に、2 番目のプロンプトが、選択された事実から結論を推測します (「推論プロンプト」)。 これらのプロンプトはループ内で交互に繰り返され、複数の推論ステップが生成され、最終的に最終的な回答に到達します。 著者は、次の図でこの考え方を示しています。
 
-The authors evaluated their technique on two benchmarks: the ProofWriter task (not shown) and [EntailmentBankQA](https://allenai.org/data/entailmentbank) (shown). The technique increased accuracy substantially, especially on harder reasoning problems.
+[![選択推論プロンプト](images/selection-inference_fig1.png)
+<br>出典: *Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning* Antonia Creswell et al. (2022)](https://arxiv.org/abs/2205.09712)
 
-![Faithful reasoning](images/faithful-reasoning_tab2.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+#### 結果
 
-In addition, their sentence label manipulation trick essentially eliminated hallucination!
+7B パラメーター モデルに適用した場合、著者らは、bAbi および Proof Writer ベンチマーク タスク (どちらもより長い一連の推論ステップを必要とする) での思考連鎖プロンプトと比較して、選択推論プロンプトのパフォーマンスが大幅に向上することを発見しました。 彼らが達成した最高のパフォーマンスは、選択推論プロンプトと微調整の両方を組み合わせたものです。
 
-![Faithful reasoning](images/faithful-reasoning_tab5.png)
-<br>Source: *Faithful Reasoning Using Large Language Models* by Antonia Creswell et al. (2022)](https://arxiv.org/abs/2208.14271)
+[![選択推論プロンプト](images/selection-inference_fig4.png)
+<br>出典: *Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning* Antonia Creswell et al. (2022)](https://arxiv.org/abs/2205.09712)
 
-#### Implications
+#### 含意
 
-This paper illustrates a number of helpful lessons for improving the reliability of large language models:
+これらのベンチマークで得られる利益は大きかったものの、これらのベンチマークはより長い一連の推論を必要とするため、特に選択されました。 多くのステップで推論を必要としない問題では、ゲインは小さくなる可能性があります。
 
-- Split complex tasks into smaller, more reliable subtasks
-- Generate your answer in a step-by-step fashion, evaluating it along the way
-- Generate many possible answers and use another model or function to pick the ones that look best
-- Reduce hallucination by constraining what the model can say (e.g., by using sentence labels instead of sentences)
-- Maximize performance of models by fine-tuning them on specialized tasks
+結果は、大規模な言語モデルを操作するためのいくつかの一般的な教訓を強調しています。 1 つ目は、複雑なタスクを小さなタスクに分割することは、信頼性とパフォーマンスを向上させる優れた方法です。 タスクがアトミックであればあるほど、モデルがエラーを起こす余地は少なくなります。 2 つ目は、最大のパフォーマンスを得るには、多くの場合、微調整と選択したアプローチを組み合わせることを意味します。
 
-To learn more, read the [full paper](https://arxiv.org/abs/2205.09712).
+詳細については、[論文全文](https://arxiv.org/abs/2205.09712)をお読みください。
 
-### Least-to-most prompting
+### 忠実な推論アーキテクチャ
 
-In addition to doing poorly on long reasoning chains (where selection-inference shines), chain-of-thought prompting can especially struggle when the examples are short but the task is long.
+選択推論を促す手法を公開してから数か月後、著者はフォローアップ論文で手法を拡張し、次のアイデアを示しました。
 
-#### Method
+- 選択と推論のサイクルをいつ停止または継続するかを判断する
+- 複数の推論パスの検索に役立つ値関数の追加
+- 文自体を書き出すのではなく、文のラベル (例: sen1) について推論するようにモデルを微調整することにより、偽の事実の幻覚を減らす
 
-Least-to-most prompting is another technique that splits up reasoning tasks into smaller, more reliable subtasks. The idea is to elicit a subtask from the model by prompting it with something like `To solve {question}, we need to first solve: "`. Then, with that subtask in hand, the model can generate a solution. The solution is appended to the original question and the process is repeated until a final answer is produced.
+#### 方法
 
-[![Least-to-most prompting](images/least-to-most_fig1.png)
-<br>Source: *Least-to-most Prompting Enables Complex Reasoning in Large Language Models* by Denny Zhou et al. (2022)](https://arxiv.org/abs/2205.10625)
+元の選択推論手法では、特殊な「選択」プロンプトと「推論」プロンプトを交互に使用して事実を選択し、それらの事実から推論を行い、組み合わせて一連の推論ステップを生成します。
 
-#### Results
+著者は、この手法を 2 つの追加コンポーネントで拡張します。
 
-When applied to benchmarks involving long reasoning chains using `code-davinci-002` (which is optimized for code but can still understand text), the authors measured gains as large as 16% -> 99.7%!
+まず、著者は、各推論ステップの後に、これまでの推論が質問に答えるのに十分かどうかを尋ねられる「ホルター」モデルを追加します。 はいの場合、モデルは最終的な答えを生成します。
+
+ホルター モデルには、いくつかの利点があります。
+
+- 必要に応じて、選択推論プロセスを停止または続行するように指示できます。
+- プロセスが停止しない場合は、答えが得られません。これは、幻覚による推測よりも望ましいことがよくあります。
+
+[![忠実な推論](images/faithful-reasoning_fig3.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+[![忠実な推論](images/faithful-reasoning_fig5.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+次に、著者は価値関数を追加します。これは、推論ステップの品質を評価し、複数の推論軌跡を検索するために使用されます。 これは、信頼性を高めるという共通のテーマを反映しています。 モデルから単一の回答を生成する代わりに、一連の回答を生成してから、ある種の価値関数/弁別子/検証モデルを使用して最適なものを選択します。
+
+[![忠実な推理】(images/faithful-reasoning_fig7.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+これら 2 つの拡張機能に加えて、著者は偽の事実の幻覚を減らすためのトリックも使用しています。 モデルに事実に基づく文章を書き出すように依頼するのではなく、代わりに文章ラベル (例: sen1) を使用するようにモデルを微調整します。 これは、モデルがプロンプトのコンテキストで言及されていない偽の事実を幻覚するのを防ぐのに役立ちます。
+
+[![忠実な推論](images/faithful-reasoning_fig4.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+#### 結果
+
+著者は、ProofWriter タスク (図示せず) と [EntailmentBankQA](https://allenai.org/data/entailmentbank) (図示) の 2 つのベンチマークで手法を評価しました。 この手法により、特に難しい推論の問題で、精度が大幅に向上しました。
+
+![忠実な推論](images/faithful-reasoning_tab2.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+さらに、彼らのセンテンス ラベル操作トリックは、実質的に幻覚を排除しました。
+
+![忠実な推論](images/faithful-reasoning_tab5.png)
+<br>出典: *大規模な言語モデルを使用した忠実な推論* Antonia Creswell ほか (2022)](https://arxiv.org/abs/2208.14271)
+
+#### 含意
+
+このホワイト ペーパーでは、大規模な言語モデルの信頼性を向上させるために役立つ多くの教訓を示しています。
+
+- 複雑なタスクをより小さく信頼性の高いサブタスクに分割する
+- ステップバイステップで答えを生成し、途中で評価します
+- 多くの可能な答えを生成し、別のモデルまたは関数を使用して最もよく見えるものを選択します
+- モデルが言うことができることを制限することによって幻覚を減らします (例えば、文の代わりに文ラベルを使用することによって)
+- 特殊なタスクでモデルを微調整することにより、モデルのパフォーマンスを最大化します
+
+詳細については、[論文全文](https://arxiv.org/abs/2205.09712)をお読みください。
+
+### 最小から最大のプロンプト
+
+長い推論チェーン (選択推論が優れている場合) でうまく機能しないことに加えて、思考チェーンのプロンプトは、例が短くてもタスクが長い場合に特に苦労する可能性があります。
+
+#### 方法
+
+最小から最大へのプロンプトは、推論タスクをより小さく信頼性の高いサブタスクに分割する別の手法です。 アイデアは、「{question} を解決するには、最初に解決する必要があります:」のようなプロンプトを出すことで、モデルからサブタスクを引き出すことです。次に、そのサブタスクを手にして、モデルは解決策を生成できます。解決策は次のとおりです。 元の質問に追加され、最終的な回答が生成されるまでプロセスが繰り返されます。
+
+[![最小から最大へのプロンプト](images/least-to-most_fig1.png)
+<br>出典: *Least-to-Most Prompting Enables Complex Reasoning in Large Language Models* by Denny Zhou et al. (2022)](https://arxiv.org/abs/2205.10625)
+
+#### 結果
+
+`code-davinci-002` (コード用に最適化されていますが、テキストを理解することができます) を使用して長い推論チェーンを含むベンチマークに適用すると、著者は 16% -> 99.7% もの大きなゲインを測定しました!
 
 [
-![Least-to-most prompting results on last-letter-concatenation task](images/least-to-most_tab4.png)
-![Least-to-most prompting results on SCAN](images/least-to-most_tab9.png)
-![Least-to-most prompting results on DROP numerical reasoning](images/least-to-most_tab11.png)
-<br>Source: *Least-to-most Prompting Enables Complex Reasoning in Large Language Models* by Denny Zhou et al. (2022)](https://arxiv.org/abs/2205.10625)
+![最後の文字連結タスクの最小から最大へのプロンプト結果](images/least-to-most_tab4.png)
+![SCAN で最小から最大のプロンプト結果](images/least-to-most_tab9.png)
+![DROP数値推論の最小から最大へのプロンプト結果](images/least-to-most_tab11.png)
+<br>出典: *Least-to-Most Prompting Enables Complex Reasoning in Large Language Models* by Denny Zhou et al. (2022)](https://arxiv.org/abs/2205.10625)
 
-#### Implications
+#### 含意
 
-Although the above gains from least-to-most prompting are impressive, they are measured on a very narrow set of tasks that require long reasoning chains.
+最小から最大へのプロンプトによる上記の利点は印象的ですが、長い推論チェーンを必要とする非常に狭い一連のタスクで測定されます。
 
-Still, they illustrate a common theme: increase reliability by (a) breaking complex tasks into smaller subtasks and (b) giving the model more time and space to work out the answer.
+それでも、(a) 複雑なタスクをより小さなサブタスクに分割し、(b) モデルが答えを導き出すためにより多くの時間とスペースを与えることにより、信頼性を高めるという共通のテーマを示しています。
 
-To learn more, read the [full paper](https://arxiv.org/abs/2205.10625).
+詳細については、[論文全文](https://arxiv.org/abs/2205.10625)をお読みください。
 
-## Related ideas
+## 関連するアイデア
 
-### Maieutic prompting
+### マイエティックプロンプト
 
-#### Method
+#### 方法
 
-In contrast to the previous techniques, which try to maximize the likelihood of correct answers, another approach is to use GPT-3 to generate a tree of possible explanations (both correct *and incorrect*), and then analyze their relationships to guess at which set is correct. This technique was coined maieutic prompting by [Jaehun Jung et al. in May 2022](https://arxiv.org/abs/2205.11822) (maieutic means relating to the Socratic method of asking questions to elicit ideas).
+正解の可能性を最大化しようとする以前の手法とは対照的に、別のアプローチは、GPT-3 を使用して可能な説明 (正しい * と間違った * の両方) のツリーを生成し、それらの関係を分析してどちらを推測することです。 セットは正しいです。 この手法は、[Jaehun Jung et al. 2022 年 5 月](https://arxiv.org/abs/2205.11822) (アイデアを引き出すために質問をするソクラテス法に関連するマユーティックな意味)。
 
-The method is complicated, and works as follows:
+この方法は複雑で、次のように機能します。
 
-- First, build a maieutic tree, where each node is a statement that could be true or false:
-  - Start with a multiple-choice question or true/false statement (e.g. `War cannot have a tie`)
-  - For each possible answer to the question, use the model to generate a correponding explanation (with a prompt like `War cannot have a tie? True, because`)
-  - Then, prompt the model with the question and the generated explanation, and ask it to produce the answer. If reversing the explanation (with a prefix like `It is wrong to say that {explanation}`) reverses the answer, then the explanation is considered 'logically integral.'
-  - If an explanation is not logically integral, then repeat the above process recursively, with each explanation turned into a True or False question, and generate more explanations for each new question.
-  - After all of the recursive explaining is done, you end up with a tree of explanations, where each leaf on the tree has the property that reversing the explanation reverses the model's answer.
-- Second, convert the tree into a graph of relations:
-  - For each node in the tree, calculate the model's relative belief in each node (inferred from the probability of getting an answer of `True` to given an explanation)
-  - For each pair of nodes in the tree, use the model to identify whether they are entailed (implied) or contradicted
-- Third, find the most consistent set of beliefs and take those to be true:
-  - Specifically, using the strength of belief in each node and the logical relationships between them, formulate the problem as a weighted maximum satisfiability problem (MAX-SAT)
-  - Use a solver to the find the most self-consistent set of beliefs, and take those as true
+- 最初に、各ノードが true または false になるステートメントである maeutic ツリーを作成します。
+   - 多肢選択式の質問または正誤問題から始めます (例: 「戦争に引き分けはありません」)
+   - 質問に対する考えられる答えごとに、モデルを使用して対応する説明を生成します (「戦争は引き分けになることはできませんか? True, because」のようなプロンプトを使用)。
+   - 次に、質問とジェネラルでモデルを促します
+
+説明を聞いて、答えを出してもらいます。 説明を逆にして (「{説明} と言うのは間違っている」などの接頭辞を付けて) 答えを逆にする場合、その説明は「論理的に不可欠」であると見なされます。
+   - 説明が論理的に統合されていない場合は、上記のプロセスを再帰的に繰り返し、各説明を真または偽の質問に変え、新しい質問ごとにさらに説明を生成します。
+   - すべての再帰的な説明が終わると、説明のツリーができあがります。ツリーの各リーフには、説明を逆にするとモデルの答えが逆になるというプロパティがあります。
+- 次に、ツリーを関係のグラフに変換します。
+   - ツリー内の各ノードについて、各ノードでのモデルの相対的信頼度を計算します (与えられた説明に対して「真」の回答が得られる確率から推測されます)。
+   - ツリー内のノードの各ペアについて、モデルを使用して、それらが含意 (暗示) されているか矛盾しているかを識別します。
+- 第三に、最も一貫した一連の信念を見つけて、それらを真実と見なします。
+   - 具体的には、各ノードの信念の強さとそれらの間の論理関係を使用して、重み付き最大充足可能性問題 (MAX-SAT) として問題を定式化します。
+   - ソルバーを使用して、最も首尾一貫した一連の信念を見つけ、それらを真実と見なす
 
 [
-  ![Maieutic prompting](images/maieutic_fig2.png)
-  ![Maieutic prompting](images/maieutic_fig6.png)
-<br>Source: *Maieutic Prompting: Logically Consistent Reasoning with Recursive Explanations* by Jaehun Jung et al. (2022)](https://arxiv.org/abs/2205.11822)
+   ![Maieutic プロンプト](images/maieutic_fig2.png)
+   ![Maieutic プロンプト](images/maieutic_fig6.png)
+<br>出典: *Maieutic Prompting: Logically Consistent Reasoning with Recursive Explains* by Jaehun Jung et al. (2022)](https://arxiv.org/abs/2205.11822)
 
 
-#### Results
+#### 結果
 
-[![Maieutic prompting results](images/maieutic_tab1.png)
-<br>Source: *Maieutic Prompting: Logically Consistent Reasoning with Recursive Explanations* by Jaehun Jung et al. (2022)](https://arxiv.org/abs/2205.11822)
+[![Maieutic プロンプトの結果](images/maieutic_tab1.png)
+<br>出典: *Maieutic Prompting: Logically Consistent Reasoning with Recursive Explains* by Jaehun Jung et al. (2022)](https://arxiv.org/abs/2205.11822)
 
-#### Implications
+#### 含意
 
-Beyond the complexity, one limitation of this method is that it appears to only apply to questions that can be posed as multiple-choice.
+複雑さを超えて、この方法の 1 つの制限は、多肢選択式として提示できる質問にのみ適用されるように見えることです。
 
-To learn more, read the [full paper](https://arxiv.org/abs/2205.11822).
+詳細については、[論文全文](https://arxiv.org/abs/2205.11822)をお読みください。
 
-## Extensions
+## 拡張機能
 
-### Self-consistency
+### 自己一貫性
 
-#### Method
+#### 方法
 
-For tasks with a discrete set of answers, one simple way to improve reliability is to sample multiple explanations & answers from the model (using a positive temperature) and then pick the final answer that appears most often.
+個別の回答セットを使用するタスクの場合、信頼性を向上させる簡単な方法の 1 つは、モデルから複数の説明と回答をサンプリングし (正の温度を使用)、最も頻繁に表示される最終的な回答を選択することです。
 
-[![Self-consistency method](images/self-consistency_fig1.png)
-<br>Source: *Self-Consistency Improves Chain of Thought Reasoning in Language Models* by Xuezhi Wang et al. (2022)](https://arxiv.org/abs/2203.11171)
+[![自己整合法](images/self-consistency_fig1.png)
+<br>出典: *Self-Consistency Improvements Chain of Thought Reasoning in Language Models* by Xuezhi Wang et al. (2022)](https://arxiv.org/abs/2203.11171)
 
-#### Results
+#### 結果
 
-This technique lifted accuracies by anywhere from 1 to 24 percentage points on a suite of math and reasoning benchmarks. (Plotted below are results from Google's LaMDA model; using Google's larger PaLM model, the baselines were higher but the gains were a bit smaller.)
+この手法により、一連の数学および推論ベンチマークで精度が 1 ～ 24 パーセント ポイント向上しました。 (下にプロットされているのは、Google の LaMDA モデルの結果です。Google のより大きな PaLM モデルを使用すると、ベースラインは高くなりましたが、ゲインは少し小さくなりました。)
 
-[![Self-consistency results](images/self-consistency_fig3.png)
-<br>Source: *Self-Consistency Improves Chain of Thought Reasoning in Language Models* by Xuezhi Wang et al. (2022)](https://arxiv.org/abs/2203.11171)
+[![自己整合性の結果](images/self-consistency_fig3.png)
+<br>出典: *Self-Consistency Improvements Chain of Thought Reasoning in Language Models* by Xuezhi Wang et al. (2022)](https://arxiv.org/abs/2203.11171)
 
-#### Implications
+#### 含意
 
-Although this technique is simple to implement, it can be costly. Generating a set of 10 answers will increase your costs by 10x.
+この手法は実装が簡単ですが、コストがかかる場合があります。 10 個の回答のセットを生成すると、コストが 10 倍になります。
 
-Also, as with many of these techniques, it applies only to tasks with a limited set of answers. For open-ended tasks where each answer is unique (such as writing a poem), it's not obvious what it would mean to pick the most common answer.
+また、これらのテクニックの多くと同様に、答えのセットが限られているタスクにのみ適用されます。 それぞれの答えが一意である自由形式のタスク (詩を書くなど) の場合、最も一般的な答えを選ぶことが何を意味するのかは明らかではありません。
 
-Lastly, this technique ought to be most beneficial when there are multiple paths or phrasings to reach an answer; if there's only one path, then the technique may not help at all. An extreme example: If the task was to generate a single token answer, then taking the most common token from 100 generations would be no different than taking the token with the highest logprobs (which you can get with a single generation at temperature=0).
+最後に、この手法は、答えにたどり着くまでに複数の経路や言い回しがある場合に最も効果的です。 パスが 1 つしかない場合、この手法はまったく役に立たない可能性があります。 極端な例: タスクが 1 つのトークンの回答を生成することであった場合、100 世代から最も一般的なトークンを取得することは、対数確率が最も高いトークンを取得することと同じです (温度 = 0 で単一の世代で取得できます)。 .
 
-### Verifiers
+### 検証者
 
-Another key technique for improving task performance is to train a verifier or discriminator model to evaluate the outputs of the main generative model. If the discriminator rejects the output, then you can resample the generative model until you get an acceptable output. In many cases, it's easier to judge an answer than it is to create an answer, which helps explain the power of this method.
+タスクのパフォーマンスを向上させるためのもう 1 つの重要な手法は、検証モデルまたは識別モデルをトレーニングして、メインの生成モデルの出力を評価することです。 ディスクリミネータが出力を拒否した場合、許容可能な出力が得られるまで生成モデルをリサンプリングできます。 多くの場合、答えを作成するよりも答えを判断する方が簡単です。これは、この方法の威力を説明するのに役立ちます。
 
-#### Method
+#### 方法
 
-In 2021, OpenAI researchers applied this technique to grade school math problems, using the following procedure:
+2021 年、OpenAI の研究者は、次の手順を使用して、この手法を小学校の数学の問題に適用しました。
 
-- First, they fine-tuned a model on questions and solutions
-- For each problem in the training set, they generated 100 solutions
-- Each of those 100 solutions was automatically labeled as either correct or incorrect, based on whether the final answer was correct
-- Using those solutions, with some labeled correct and some labeled incorrect, they fine-tuned a verifier model to classify whether a question and candidate solution was correct or incorrect
-- Finally, at test time, the generative model creates 100 solutions to each problem, and the one with the highest score according to the verifier model is picked as the final answer
+- 最初に、質問と解決策に関するモデルを微調整しました
+- トレーニング セット内の問題ごとに、100 個のソリューションを生成しました
+- 最終的な答えが正しかったかどうかに基づいて、これらの 100 のソリューションのそれぞれに、正しいか正しくないかのラベルが自動的に付けられました。
+- これらのソリューションを使用して、正解とラベル付けされたものと不正解とラベル付けされたものを使用して、検証者モデルを微調整し、質問と候補のソリューションが正しいか正しくないかを分類しました。
+- 最後に、テスト時に、生成モデルは各問題に対して 100 個のソリューションを作成し、検証者モデル i に従って最もスコアの高いソリューションを作成します。
 
-[![Verifier method](images/verifiers_fig3.png)
-<br>Source: *Training Verifiers to Solve Math Word Problems* by Karl Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168)
+が最終的な回答として選ばれました
 
-#### Results
+[![検証方法](images/verifiers_fig3.png)
+<br>出典: *Training Verifiers to Solve Math Word Problems* by Karl Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168)
 
-With a 175B GPT-3 model and 8,000 training examples, this technique substantially lifted gradeschool math accuracy from ~33% to ~55%.
+#### 結果
 
-[![Verifier results](images/verifiers_fig5.png)
-<br>Source: *Training Verifiers to Solve Math Word Problems* by Karl Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168)
+175B GPT-3 モデルと 8,000 のトレーニング例を使用したこの手法により、小学校の数学の精度が ~33% から ~55% に大幅に向上しました。
 
-#### Implications
+[![検証結果](images/verifiers_fig5.png)
+<br>出典: *Training Verifiers to Solve Math Word Problems* by Karl Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168)
 
-Similar to the self-consistency technique, this method can get expensive, as generating, say, 100 solutions per task will increase your costs by roughly ~100x.
+#### 含意
 
-## Theories of reliability
+自己一貫性手法と同様に、この方法はコストが高くなる可能性があります。たとえば、タスクごとに 100 個のソリューションを生成すると、コストが約 100 倍増加します。
 
-Although the techniques above vary in their approach, they all share the goal of improving reliability on complex tasks. Mainly they do this by:
+## 信頼性の理論
 
-- decomposing unreliable operations into smaller, more reliable operations (e.g., selection-inference prompting)
-- using multiple steps or multiple relationships to make the system's reliability greater than any individual component (e.g., maieutic prompting)
+上記の手法はアプローチが異なりますが、複雑なタスクの信頼性を向上させるという目標はすべて共有されています。 主に次の方法でこれを行います。
 
-### Probabilistic graphical models
+- 信頼できない操作をより小さく、より信頼できる操作に分解する (例: 選択推論プロンプト)
+- システムの信頼性を個々のコンポーネントよりも高くするために、複数のステップまたは複数の関係を使用する (例: maeutic プロンプト)
 
-This paradigm of trying to build a reliable system out of less reliable components is reminiscent of probabilistic programming, and many of the analysis techniques of that field can be applied to this one.
+### 確率的グラフィカルモデル
 
-In the paper *Language Model Cascades*, David Dohan et al. interpret the above techniques in the paradigm of probabilistic graphical models:
+信頼性の低いコンポーネントから信頼性の高いシステムを構築しようとするこのパラダイムは、確率的プログラミングを連想させ、その分野の分析手法の多くをこれに適用できます。
 
-#### Chain of thought prompting
+論文 *Language Model Cascades* で、David Dohan 等。 確率的グラフィカル モデルのパラダイムで上記の手法を解釈します。
 
-[![graphical model of chain of thought prompting](images/lm_cascades_fig1.png)
-<br>Source: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
+#### 促す思考の連鎖
 
-#### Fine-tuned chain of thought prompting / Self-taught reasoner
+[![一連の思考を促すグラフィック モデル](images/lm_cascades_fig1.png)
+<br>出典: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
 
-[![graphical model of fine-tuned chain of thought prompting](images/lm_cascades_fig3.png)
-<br>Source: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
+#### 微調整された思考の連鎖を促す/独学で推論する
 
-#### Selection-inference prompting
+[![微調整された一連の思考を促すグラフィカル モデル](images/lm_cascades_fig3.png)
+<br>出典: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
 
-[![graphical model of selection-inference prompting](images/lm_cascades_fig4.png)
-<br>Source: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
+#### 選択推論プロンプト
 
-#### Verifiers
+[![選択推論プロンプトのグラフィカル モデル](images/lm_cascades_fig4.png)
+<br>出典: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
 
-[![graphical model of verifiers](images/lm_cascades_fig5.png)
-<br>Source: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
+#### 検証者
 
-#### Implications
+[![ベリファイアのグラフィカル モデル](images/lm_cascades_fig5.png)
+<br>出典: *Language Model Cascades* by David Dohan et al. (2022)](https://arxiv.org/abs/2207.10342)
 
-Although formulating these techniques as probabilistic graphical models may not be immediately useful for solving any particular problem, the framework may be helpful in selecting, combining, and discovering new techniques.
+#### 含意
 
-## Closing thoughts
+これらの手法を確率的グラフィカル モデルとして定式化しても、特定の問題を解決するのにすぐに役立つわけではありませんが、このフレームワークは、新しい手法を選択、組み合わせ、発見するのに役立つ場合があります。
 
-Research into large language models is very active and evolving rapidly. Not only do researchers continue to improve the models, they are also continue to improve our understanding of how to best employ the models. To underscore the pace of these developments, note that all of the papers shared above were published within the past 12 months (as I write in Sep 2022).
+## 最後に
 
-In the future, expect better models and better techniques to be published. Even if the specific techniques here are eclipsed by future best practices, the general principles behind them will likely remain a key part of any expert user's toolkit.
+大規模な言語モデルの研究は非常に活発で、急速に進化しています。 研究者はモデルを改善し続けているだけでなく、モデルを最適に使用する方法についての私たちの理解も改善し続けています。 これらの開発のペースを強調するために、上記で共有されているすべての論文が過去 12 か月以内に公開されたことに注意してください (私が 2022 年 9 月に書いているように)。
 
-## Bibliography
+将来的には、より優れたモデルと技術が公開されることを期待してください。 ここでの特定の手法が将来のベスト プラクティスに影を落としたとしても、その背後にある一般原則は、エキスパート ユーザーのツールキットの重要な部分であり続けるでしょう。
 
-| Lesson                                                                                                                         | Paper                                                                                                                                     | Date     |
-|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Break complex tasks into simpler subtasks (and consider exposing the intermediate outputs to users)                            | [AI Chains: Transparent and Controllable Human-AI Interaction by Chaining Large Language Model Prompts](https://arxiv.org/abs/2110.01691) | 2021 Oct |
-| You can improve output by generating many candidates, and then picking the one that looks best                                 | [Training Verifiers to Solve Math Word Problems](https://arxiv.org/abs/2110.14168)                                                        | 2021 Oct |
-| On reasoning tasks, models do better when they reason step-by-step before answering                                            | [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903)                                 | 2022 Jan |
-| You can improve step-by-step reasoning by generating many explanation-answer outputs, and picking the most popular answer      | [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)                               | 2022 Mar |
-| If you want to fine-tune a step-by-step reasoner, you can do it with multiple-choice question & answer data alone              | [STaR: Bootstrapping Reasoning With Reasoning](https://arxiv.org/abs/2203.14465)                                                          | 2022 Mar |
-| The step-by-step reasoning method works great even with zero examples                                                          | [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916)                                                         | 2022 May |
-| You can do better than step-by-step reasoning by alternating a ‘selection’ prompt and an ‘inference’ prompt                    | [Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning](https://arxiv.org/abs/2205.09712)             | 2022 May |
-| On long reasoning problems, you can improve step-by-step reasoning by splitting the problem into pieces to solve incrementally | [Least-to-most Prompting Enables Complex Reasoning in Large Language Models](https://arxiv.org/abs/2205.10625)                            | 2022 May |
-| You can have the model analyze both good and bogus explanations to figure out which set of explanations are most consistent    | [Maieutic Prompting: Logically Consistent Reasoning with Recursive Explanations](https://arxiv.org/abs/2205.11822)                        | 2022 May |
-| You can think about these techniques in terms of probabilistic programming, where systems comprise unreliable components       | [Language Model Cascades](https://arxiv.org/abs/2207.10342)                                                                               | 2022 Jul |
-| You can eliminate hallucination with sentence label manipulation, and you can reduce wrong answers with a 'halter' prompt   | [Faithful Reasoning Using Large Language Models](https://arxiv.org/abs/2208.14271)                                                                               | 2022 Aug |
+## 参考文献
+| レッスン | 論文 | 日付 |
+|----------|----|------|
+| 複雑なタスクをより単純なサブタスクに分割します (中間出力をユーザーに公開することを検討してください)                    |  [AI チェーン: 大規模な言語モデル プロンプトをチェーンすることによる透過的で制御可能な人間と AI の相互作用](https://arxiv.org/abs/2110.01691) | 2021年10月 |
+| 多くの候補を生成し、最適な候補を選択することで、出力を改善できます。                                                   |  [数学の単語の問題を解決するための検証者のトレーニング](https://arxiv.org/abs/2110.14168) | 2021年10月 |
+| 推論タスクでは、答える前に段階的に推論すると、モデルのパフォーマンスが向上します。                                     |  [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) | 2022年1月 |
+| 多くの説明と回答の出力を生成し、最も人気のある回答を選択することで、段階的な推論を改善できます。                       |  [Self Consistency Improvements Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171) | 2022年3月 |
+| もし、あんたが段階的推論を微調整したい場合、多肢選択式の質問と回答のデータだけでそれを行うことができます               |  [スター: 推論による推論のブートストラップ](https://arxiv.org/abs/2203.14465) | 2022年3月 |
+| ステップバイステップの推論方法は、例がなくてもうまく機能します                                                         |  [大規模言語モデルはゼロショット推論](https://arxiv.org/abs/2205.11916) | 2022年5月 |
+| 「選択」プロンプトと「推論」プロンプトを交互に使用することで、段階的な推論よりも優れた結果を得ることができます         |  [選択推論: 解釈可能な論理的推論のための大規模な言語モデルの活用](https://arxiv.org/abs/2205.09712) | 2022年5月 |
+| 長い推論の問題では、問題を分割して段階的に解決することで、段階的な推論を改善できます。                                 |  [最小から最大へのプロンプトにより、大規模な言語モデルで複雑な推論が可能になる](https://arxiv.org/abs/2205.10625) | 2022年5月 |
+| モデルに正しい説明と偽の説明の両方を分析させて、どの説明セットが最も一貫しているかを判断できます。                     |  [Maieutic Prompting: 再帰的説明による論理的に一貫した推論](https://arxiv.org/abs/2205.11822) | 2022年5月 |
+| これらの手法は、システムが信頼性の低いコンポーネントで構成されている確率的プログラミングの観点から考えることができます |  [言語モデル カスケード](https://arxiv.org/abs/2207.10342) | 2022年7月 |
+| 文ラベル操作で幻覚をなくすことができ、「ホルター」プロンプトで誤答を減らすことができます                               |  [大規模な言語モデルを使用した忠実な推論](https://arxiv.org/abs/2208.14271) | 2022年8月 |
