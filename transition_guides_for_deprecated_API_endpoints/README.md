@@ -1,13 +1,13 @@
 # 回答、分類、および検索の廃止
 
-In 2021, OpenAI released specialized endpoints in beta for Answers, Classification, and Search.
+2021年、OpenAIはベータ版の中で「回答」「分類」「検索」に特化したエンドポイントをリリースしましたが、
+これらのエンドポイントは便利な反面, 以下2つの欠点がありました。
 
-While these specialized endpoints were convenient, they had two drawbacks:
+1. これらの特殊なエンドポイントは、より良い結果を出す他の技術に駆逐された。
+2. カスタマイズが難しく、個々のユースケースに最適化しにくい。
 
-1. These specialized endpoints were eclipsed by techniques that achieved better results.
-2. These specialized endpoints were more difficult to customize and optimize for individual use cases.
+その結果, **「回答」「分類」「検索」のエンドポイントは廃止されます.**
 
-As a result, **the Answers, Classifications, and Search endpoints are being deprecated.**
 
 ## Timeline of deprecation
 
