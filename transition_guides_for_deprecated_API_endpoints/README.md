@@ -1,4 +1,4 @@
-# Deprecation of Answers, Classification, and Search
+# 回答、分類、および検索の廃止
 
 In 2021, OpenAI released specialized endpoints in beta for Answers, Classification, and Search.
 
