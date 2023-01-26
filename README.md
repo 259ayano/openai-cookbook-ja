@@ -6,9 +6,9 @@
 
 ## ガイド ＆ 例
 
-* API の使用状況
+* API の使い方
   * [レート制限状況の把握方法](examples/How_to_handle_rate_limits.ipynb)
-    * [レート制限のヒットを回避する並列処理スクリプトの例](examples/api_request_parallel_processor.py)
+    * [レート制限を回避する並列処理スクリプトの例](examples/api_request_parallel_processor.py)
   * [tiktokenでトークンを数える方法](examples/How_to_count_tokens_with_tiktoken.ipynb)
   * [入力候補をストリーミングする方法](examples/How_to_stream_completions.ipynb)
 * GPT-3
