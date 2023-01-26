@@ -31,7 +31,7 @@ git diff batter:[ファイル名] pitcher:[ファイル名]
 # OpenAI Cookbook とは
 
 [OpenAI Cookbook](https://github.com/openai/openai-cookbook) では、OpenAI API を使用して一般的なタスクを実行するためのサンプルコードを共有しています。  
-これらの例を実行するには、OpenAI アカウントと関連する API キー (無料アカウントを作成) が必要です。  
+これらの例を実行するには、OpenAI アカウントと関連する API キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。  
 
 ## ガイド ＆ 例
