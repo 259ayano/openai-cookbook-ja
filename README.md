@@ -81,7 +81,19 @@ git diff batter:[ファイル名] pitcher:[ファイル名]
 * [OpenAI Examples] でプロンプトの例を参照してください
 * [ChatGPT]のfreeな回答プレビューで遊ぶ 
 * [OpenAI Blog]で最新情報を入手する
-* 
+
 ## 貢献する
 
 あなたが見たい 例 や ガイド があれば、気兼ねなく[issues page]に提案してください。
+
+
+[ChatGPT]: https://chat.openai.com/
+[OpenAI API]: https://openai.com/api/
+[API Signup]: https://beta.openai.com/signup
+[OpenAI Playground]: https://beta.openai.com/playground
+[OpenAI Documentation]: https://beta.openai.com/docs/introduction
+[OpenAI Community Forum]: https://community.openai.com/top?period=monthly
+[OpenAI Help Center]: https://help.openai.com/en/
+[OpenAI Examples]: https://beta.openai.com/examples
+[OpenAI Blog]: https://openai.com/blog/
+[issues page]: https://github.com/openai/openai-cookbook/issues
