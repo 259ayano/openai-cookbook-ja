@@ -48,7 +48,7 @@ git diff batter:[ファイル名] pitcher:[ファイル名]
   * [テキストの書き方の例](text_writing_examples.md)
   * [テキスト説明の例](text_explanation_examples.md)
   * [テキスト編集の例](text_editing_examples.md)
-  * [コードの書き方の例](code_writing_examples.md)
+  * [コード作成の例](code_writing_examples.md)
   * [コード説明の例](code_explanation_examples.md)
   * [コード編集の例](code_editing_examples.md)
 * 埋め込み
