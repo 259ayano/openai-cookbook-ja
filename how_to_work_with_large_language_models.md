@@ -1,3 +1,29 @@
+## コード機能
+
+大規模な言語モデルはテキストだけでなく、コードも得意とします。OpenAI の専門的なコードモデルは [Codex] と呼ばれています。
+
+Codex は、以下を含む [70 以上の製品][Codex Apps Blog Post] に使用されています。
+
+* [GitHub Copilot] (VS Code およびその他の IDE でコードをオートコンプリートします)
+* [Pygma](https://pygma.app/) (Figma のデザインをコードに変換)
+* [Replit](https://replit.com/) (「コードの説明」ボタンとその他の機能があります)
+* [Warp](https://www.warp.dev/) （AIコマンド検索付きスマート端末）
+* [Machinet](https://machinet.net/) (Java 単体テスト テンプレートを記述)
+
+指示に従うテキスト モデル (例: text-davinci-003 ) とは異なり、Codex は指示に従うようにトレーニングされて *いない* ことに注意してください。その結果、優れたプロンプトを設計するには、より注意を払う必要があります。
+
+### その他のプロンプトアドバイス
+
+その他のプロンプトの例については、[OpenAI Examples] をご覧ください。
+
+一般的に、入力プロンプトはモデルの出力を向上させるための最良のレバーです。以下のようなトリックを試すことができます。
+
+* **より明示的な指示を与える。** 例えば、カンマ区切りのリストを出力させたい場合は、カンマ区切りのリストを返すように指示します。答えがわからないときに「わからない」と言わせたい場合は「答えがわからないときは "わからない" と言ってください」と指示します。
+* **よりよい例を与えて下さい。** プロンプトで例を示す場合は、例が多様で質の高いものであることを確認します。
+* **専門家であるかのように答えるようにモデルに依頼する。** モデルに高品質な出力や専門家が書いたような出力を明示的に求めると、モデルは専門家が書いたと思うような高品質の答えを出すようになります。例えば、"次の答えは正しく、高品質で、専門家によって書くようにしてください。"
+* **モデルにその理由を説明する一連のステップを書き出すように促す。** 例えば、回答の前に "Let's think step by step. "のような言葉を添えます。最終的な答えの前に、モデルに推論の説明をするよう促すことで、最終的な答えが一貫した正しいものである可能性を高めることができます。
+
+<!--
 # How to work with large language models
 
 ## How large language models work
@@ -140,7 +166,7 @@ In general, the input prompt is the best lever for improving model outputs. You 
 * **Supply better examples.** If you're demonstrating examples in your prompt, make sure that your examples are diverse and high quality.
 * **Ask the model to answer as if it was an expert.** Explicitly asking the model to produce high quality output or output as if it was written by an expert can induce the model to give higher quality answers that it thinks an expert would write. E.g., "The following answer is correct, high-quality, and written by an expert."
 * **Prompt the model to write down the series of steps explaining its reasoning.** E.g., prepend your answer with something like "[Let's think step by step](https://arxiv.org/pdf/2205.11916v1.pdf)." Prompting the model to give an explanation of its reasoning before its final answer can increase the likelihood that its final answer is consistent and correct.
-
+-->
 
 
 [Fine Tuning Docs]: https://beta.openai.com/docs/guides/fine-tuning
