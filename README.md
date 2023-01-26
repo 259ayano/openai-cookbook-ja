@@ -68,9 +68,8 @@
 [OpenAI Blog]: https://openai.com/blog/
 [issues page]: https://github.com/openai/openai-cookbook/issues
 
-#日本語訳について
-[OpenAI Cookbook](https://github.com/openai/openai-cookbook) の日本語訳です。  
-機械翻訳したものをベースに、少しでも補正して読み易くなれば良いなと考えています。 
+# 日本語訳について
+[OpenAI Cookbook](https://github.com/openai/openai-cookbook) を機械翻訳したものをベースに、少しでも補正して読み易くなれば良いなと考えています。 
 元となるリポジトリへの追従、一貫性のある読み易い翻訳のガイドなど、他のリポジトリを参考にしながら進めたいと思います。
 
 私は以下の方法で[本家](https://github.com/openai/openai-cookbook)に追随しようと考えています（もっと良い方法があると思うので教えて下さい）
