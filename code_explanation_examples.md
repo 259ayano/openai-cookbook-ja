@@ -1,3 +1,49 @@
+# コード説明の例
+
+GPTのコード理解は、以下のような多くのユースケースに適用可能です。
+
+* コード内ドキュメントの生成（例：Python docstrings, git commit messages）
+* コード外のドキュメントを生成する（例：man page）
+* インタラクティブなコード探索ツール
+* 自然言語インターフェースによるユーザーへのプログラム結果の伝達
+
+例えば、SQL クエリを理解したい場合、`code-davinci-002` に次のようなプロンプトの例を与えることができるます。
+
+````text
+以下、SQL クエリ:
+```
+SELECT c.customer_id
+FROM Customers c
+JOIN Streaming s
+ON c.customer_id = s.customer_id
+WHERE c.signup_date BETWEEN '2020-03-01' AND '2020-03-31'
+AND s.watch_date BETWEEN c.signup_date AND DATE_ADD(c.signup_date, INTERVAL 30 DAY)
+GROUP BY c.customer_id
+HAVING SUM(s.watch_minutes) > 50 * 60
+```
+
+質問です。
+1. このSQLクエリは何をするのですか？
+2. なぜこの期間に興味を持つ人がいるのでしょうか？
+3. なぜ企業はこのSQLクエリに興味があるのでしょうか？
+
+答えてください。
+````
+
+[出力]((https://beta.openai.com/playground/p/Sv1VQKbJV1TZKmiTK9r6nlj3)):
+
+```text
+1. このSQLクエリは、2020年3月に契約し、契約後最初の30日間に50時間以上コンテンツを視聴したすべての顧客を検索します。
+2. この期間は、COVID-19のパンデミックの最初の月であるため、興味深いです。
+3. この SQL クエリは、パンデミックがビジネスにどのような影響を与えたかを理解するのに役立つので、ある企業はこの SQL クエリに興味を持つかもしれません。
+```
+
+`code-davinci-002` は指示に従うように訓練されていないので、通常、出力を制御するための例や他の構造、また、生成を停止するための停止シーケンスが必要であることに注意してください。
+より簡単にプロンプトを表示するには、 `text-davinci-003` を試してみてください。
+
+
+
+<!--
 # Code explanation examples
 
 GPT's understanding of code can be applied to many use cases, e.g.:
@@ -39,3 +85,4 @@ Answers:
 ```
 
 Note that `code-davinci-002` is not trained to follow instructions and therefore usually needs examples or other structure to help steer its output, as well as stop sequences to stop generating. For easier prompting, try `text-davinci-003`.
+-->
