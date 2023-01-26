@@ -1,4 +1,4 @@
-# コード編集例
+# コード編集の例
 
 OpenAI の [edits](https://openai.com/blog/gpt-3-edit-insert/) エンドポイントは、コードの編集に特に役立ちます。
 
