@@ -1,14 +1,14 @@
-# テキストの比較例
+# テキスト比較の例
 
 [OpenAI API embeddings endpoint](https://beta.openai.com/docs/guides/embeddings) は、テキストの断片間の関連性や類似性を測定するために使用することができます。
 
-GPT-3のテキストに対する理解を活用し、これらのエンベッディングは教師なし学習と転移学習のベンチマークで[最先端の結果を達成](https://arxiv.org/abs/2201.10005)しています。
+GPT-3のテキストに対する理解を活用し、これらの埋め込みは教師なし学習と転移学習のベンチマークで[最先端の結果を達成](https://arxiv.org/abs/2201.10005)しています。
 
 埋め込みは、意味検索、レコメンデーション、クラスタ分析、重複検出などに利用することができます。
 
-詳しくは、OpenAIのブログ記事のお知らせをご覧ください。
+詳しくは、OpenAI のブログ記事のお知らせをご覧ください。
 
-* [テキストとコードのエンベッディングの紹介(2022年1月)](https://openai.com/blog/introducing-text-and-code-embeddings/)
+* [テキストとコードの埋め込みの紹介(2022年1月)](https://openai.com/blog/introducing-text-and-code-embeddings/)
 * [新しく改良された埋め込みモデル(2022年12月)](https://openai.com/blog/new-and-improved-embedding-model/)
 
 ## セマンティック検索
@@ -26,13 +26,13 @@ GPT-3のテキストに対する理解を活用し、これらのエンベッデ
   * データベースから最も近い埋め込みを探す
   * 検索結果の上位を返す
 
-検索に embeddings を使う例は [Semantic_text_search_using_embeddings.ipynb](examples/Semantic_text_search_using_embeddings.ipynb) で示されています。
+検索に埋め込みを使う例は [Semantic_text_search_using_embeddings.ipynb](examples/Semantic_text_search_using_embeddings.ipynb) で示されています。
 
 より高度な検索システムでは、埋め込みのコサイン類似度は、検索結果のランキングのための多くの特徴のうちの1つとして使われます。
 
 ## 質問応答
 
-GPT-3から信頼性の高い回答を得るための最良の方法は、GPT-3が正しい回答を見つけることができるような原文を与えることである。上記のセマンティック検索を用いると、関連する情報のために文書のコーパスを安価に検索し、その情報をプロンプトを介してGPT-3に与え、質問に回答させることができる。
+GPT-3 から信頼性の高い回答を得るための最良の方法は、GPT-3 が正しい回答を見つけることができるような原文を与えることである。上記のセマンティック検索を用いると、関連する情報のために文書のコーパスを安価に検索し、その情報をプロンプトを介してGPT-3に与え、質問に回答させることができる。
 [Question_answering_using_embeddings.ipynb](examples/Question_answering_using_embeddings.ipynb) でデモを行っています。
 
 ## レコメンデーション
