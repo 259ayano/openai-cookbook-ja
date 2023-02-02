@@ -1,3 +1,55 @@
+# テキストを書く
+
+大規模な言語モデルは、テキストの記述に優れており、あらゆる種類の作業を支援することができます。
+
+* ブログ投稿
+* Email copy
+* 広告コピー
+* ウェブサイトのコピー
+* 商品説明
+* メモ
+* ストーリーテリング
+* ブレーンストーミング
+* 質問の生成
+* など
+
+GPT-3を動かす最も簡単な方法は「何が欲しいか」を伝えることです。たとえば、電子メールを書いてほしいなら、次のようなプロンプトを使うことができます。
+
+```text
+ジルという名前の同僚に、彼女の昇進を祝うメールを書いてください。  
+口調（トーン）は温かみがありながらもプロフェッショナルでなければなりません。  
+彼女がこれまで取り組んできた仕事をどのように賞賛しているかを述べてください。  
+彼女のペットのトカゲであるマックスがバッタを食べるのが好きだというジョークを含めてください。  
+来週のチームのオフサイトをいかに楽しみにしているのかを述べてください。
+```
+Jill という名前の同僚に昇進を祝うメールを書いてください。口調は暖かく、かつプロフェッショナルであるべきです。
+彼女の仕事ぶりに感心していることを述べましょう。 ペットのトカゲのMaxがバッタを好んで食べるというジョークも添えて。来週のチームオフサイトがいかに楽しみであるかを述べる。
+
+[出力](https://beta.openai.com/playground/p/fUeh5saVLI2dhU0WU3nZtIiU):
+
+```text
+件名：ジル、昇進おめでとう
+
+親愛なるジルへ
+
+昇進おめでとう！私はあなたの素晴らしい仕事に感心しており、あなたの成功を本当に嬉しく思います.  
+トカゲのマックスも一緒に祝っていることでしょう。バッタを食べるのが大好きだそうですから、特別におやつをご馳走してあげてくださいね。
+
+来週のチームオフサイトでお会いできるのを楽しみにしています。きっと、皆さんの成功を祝う素晴らしい機会になると思います。
+
+これからも頑張ってね。
+```
+
+一般に、ライティングは、指示であれ、従うべき一連の例であれ、どのようなスタイルのプロンプトでもうまくいきます。あなたの用途に最も適した方法を試してみてください。
+また、ライティングは、どのようなタイプのモデルにも対応しますが、それぞれに長所と短所があります。
+
+|                                                            | Advantages                                                                    | Disadvantages                                                                    |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| 命令に従うモデル<br>(e.g., `text-davinci-003`) | 最も使いやすい                                                                | あまり創造的ではありません。多様性が低い。トーン、長さなどのコントロールが難しい。  |
+| ベースモデル<br>(e.g., `davinci`)                           | よりクリエイティブに                                                                 | より高価です（プロンプトで例のデモンストレーションを含めるとトークンが必要になるため） |
+| 微調整されたモデル                                          | 多くの例から訓練できます。プロンプトに例を含めるよりも安価 | トレーニングデータの収集が難しい。トレーニングは反復を遅くし、より高価にします |
+
+<!--
 # Text writing examples
 
 Large language models are excellent at writing. They can assist with all sorts of tasks:
@@ -46,3 +98,4 @@ Writing also works with any type of model, though they each have strengths and w
 | Instruction-following models<br>(e.g., `text-davinci-003`) | Easiest to use                                                                | Less diverse; less creative; sometimes harder to steer tone, style, etc.                |
 | Base models<br>(e.g., `davinci`)                           | Potentially more creative and diverse                                                                 | Harder to prompt well, more expensive (as examples in the prompt cost extra tokens) |
 | Fine-tuned models                                          | Can train off of many examples; cheaper than including examples in the prompt | Hard to gather training data; training makes iteration slower and more expensive |
+-->
