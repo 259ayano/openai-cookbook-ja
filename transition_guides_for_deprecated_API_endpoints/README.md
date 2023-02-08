@@ -22,10 +22,9 @@
 
 [ガイド: Answers エンドポイントから移行する方法](https://help.openai.com/en/articles/6233728-answers-transition-guide)
 
-オプション1: 埋め込み型検索への移行 **（推奨）**
+* オプション1: 埋め込み型検索への移行 **（推奨）**
   * サンプルコード [Semantic_text_search_using_embeddings.ipynb](../examples/Semantic_text_search_using_embeddings.ipynb)
-
-* 選択肢2：Answersのエンドポイント機能を再実装する
+* オプション2：Answersのエンドポイント機能を再実装する
   * サンプルコード [answer_functionality_example.py](answer_functionality_example.py)
 
 ### Classifications
