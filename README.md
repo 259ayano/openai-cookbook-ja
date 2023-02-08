@@ -13,7 +13,7 @@
   * [入力候補をストリーミングする方法](examples/How_to_stream_completions.ipynb)
 * GPT-3
   * [ガイド: 大規模な言語モデルを操作する方法](how_to_work_with_large_language_models.md)
-  * [ガイド:信頼性を向上させるテクニック](techniques_to_improve_reliability.md)
+  * [ガイド: 信頼性を向上させるテクニック](techniques_to_improve_reliability.md)
   * [複数ステップのプロンプトを使用して単体テストを記述する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb)
   * [テキストを書く例](text_writing_examples.md)
   * [テキストを説明する例](text_explanation_examples.md)
