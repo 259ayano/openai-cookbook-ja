@@ -4,13 +4,24 @@
 これらの例を実行するには、OpenAI アカウントと関連する API キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。  
 
-## ガイド ＆ 例
+## 最近追加された項目 🆕 ✨
+
+- [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb) [Mar 1st, 2023]
+- [Using Vector Databases for Embeddings Search with Redis](https://github.com/openai/openai-cookbook/tree/main/examples/vector_databases/redis) [Feb 15th, 2023]
+- [Website Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/web-crawl-q-and-a) [Feb 11th, 2023]
+- [File Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/file-q-and-a) [Feb 11th, 2023]
+- [Visualize Embeddings in Weights & Biases](https://github.com/openai/openai-cookbook/blob/main/examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
+- [Retrieval Enhanced Generative Question Answering with Pinecone](https://github.com/openai/openai-cookbook/blob/main/examples/vector_databases/pinecone/Gen_QA.ipynb) [Feb 8th, 2023]
+
+## ガイドとサンプル
 
 * API の使い方
   * [レート制限状況の把握方法](examples/How_to_handle_rate_limits.ipynb)
     * [レート制限を回避する並列処理スクリプトの例](examples/api_request_parallel_processor.py)
   * [tiktokenでトークンを数える方法](examples/How_to_count_tokens_with_tiktoken.ipynb)
   * [入力候補をストリーミングする方法](examples/How_to_stream_completions.ipynb)
+- ChatGPT
+  - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb)
 * GPT-3
   * [ガイド: 大規模な言語モデルを操作する方法](how_to_work_with_large_language_models.md)
   * [ガイド: 信頼性を向上させるテクニック](techniques_to_improve_reliability.md)
@@ -39,6 +50,9 @@
   * [Azure OpenAI から入力候補を取得する方法](examples/azure/completions.ipynb)
   * [Azure OpenAI から埋め込みを取得する方法](examples/azure/embeddings.ipynb)
   * [Azure OpenAI で GPT-3 を微調整する方法](examples/azure/finetuning.ipynb)
+- Apps
+  - [File Q and A](apps/file-q-and-a/)
+  - [Web Crawl Q and A](apps/web-crawl-q-and-a)
 
 ## 関連リソース
 
