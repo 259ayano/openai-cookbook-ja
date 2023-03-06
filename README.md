@@ -16,10 +16,10 @@
 ## ガイドとサンプル
 
 * API の使い方
-  * [レート制限状況の把握方法](examples/How_to_handle_rate_limits.ipynb)
-    * [レート制限を回避する並列処理スクリプトの例](examples/api_request_parallel_processor.py)
-  * [tiktokenでトークンを数える方法](examples/How_to_count_tokens_with_tiktoken.ipynb)
-  * [入力候補をストリーミングする方法](examples/How_to_stream_completions.ipynb)
+  * [How to handle rate limits](examples/How_to_handle_rate_limits.ipynb)
+    * [Example parallel processing script that avoids hitting rate limits](examples/api_request_parallel_processor.py)
+  * [How to count tokens with tiktoken](examples/How_to_count_tokens_with_tiktoken.ipynb)
+  * [How to stream completions](examples/How_to_stream_completions.ipynb)
 - ChatGPT
   - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb)
 * GPT-3
