@@ -1,18 +1,16 @@
 # File Q&A
 
-File Q&A is a [Next.js](https://nextjs.org/) app that lets you find answers in your files using OpenAI APIs. You can upload files and ask questions related to their content, and the app will use embeddings and GPT to generate answers from the most relevant files.
+「File Q&A」というアプリは、OpenAI APIを使用してファイル内の答えを見つけることができるNext.jsアプリです。ファイルをアップロードして、その内容に関する質問をすることができ、アプリは埋め込みとGPTを使用して、最も関連性の高いファイルから回答を生成します。
 
-This repo contains two versions of the app:
+このリポジトリには、2つのバージョンのアプリが含まれています。
 
-- `/nextjs`: A standalone Next.js app that stores embeddings locally in the browser. You will need an OpenAI API key to use this app. Read more in its [README](./nextjs/README.md).
-- `/nextjs-with-flask-server`: A Next.js app that uses a Flask server as a proxy to access the OpenAI APIs, and Pinecone as a vector database to store embeddings. You will need an OpenAI API key and a Pinecone API key to use this app. Read more in its [README](./nextjs-with-flask-server/README.md).
+- `/nextjs`:ブラウザ内でローカルに埋め込みを保存するスタンドアロンのNext.jsアプリです。このアプリを使用するには、OpenAI APIキーが必要です。詳細については、 [README](./nextjs/README.md)を読んでください。
+- `/nextjs-with-flask-server`:Flaskサーバーをプロキシとして使用してOpenAI APIにアクセスし、Pineconeをベクターデータベースとして使用するNext.jsアプリです。このアプリを使用するには、OpenAI APIキーとPinecone APIキーが必要です。詳細については [README](./nextjs-with-flask-server/README.md)を読んでください。
 
-To run either version of the app, please follow the instructions in the respective README.md files in the subdirectories.
+アプリのいずれかのバージョンを実行するには、それぞれのサブディレクトリのREADME.mdファイルに記載された手順に従ってください。
 
-## How it works
+## 動作方法
+ファイルをアップロードすると、ファイルからテキストが抽出されます。このテキストは、短いテキストチャンクに分割され、各テキストチャンクに対して埋め込みが作成されます。ユーザーが質問をすると、質問に対する埋め込みが作成され、類似性検索が実行され、質問埋め込みと最も類似しているファイルチャンクの埋め込み（すなわち、質問埋め込みと余弦類似度が最も高いもの）が見つかります。次に、コンプリーションズエンドポイントに質問が含まれ、最も関連性の高いファイルチャンクがプロンプトに含まれてAPI呼び出しが行われます。生成モデルは、抽出されたテキスト内に回答が見つかる場合、ファイルチャンク内の質問に対する回答を生成します。
 
-When a file is uploaded, text is extracted from the file. This text is then split into shorter text chunks, and an embedding is created for each text chunk. When the user asks a question, an embedding is created for the question, and a similarity search is performed to find the file chunk embeddings that are most similar to the question (i.e. have highest cosine similarities with the question embedding). An API call is then made to the completions endpoint, with the question and the most relevant file chunks are included in the prompt. The generative model then gives the answer to the question found in the file chunks, if the answer can be found in the extracts.
-
-## Limitations
-
-The app may sometimes generate answers that are not in the files, or hallucinate about the existence of files that are not uploaded.
+## 制限事項
+アプリは、時にはファイルに存在しない回答を生成することがあり、アップロードされていないファイルの存在を想像することがあります。
