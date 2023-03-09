@@ -1,11 +1,11 @@
 # File Q&A
 
-「File Q&A」というアプリは、OpenAI APIを使用してファイル内の答えを見つけることができるNext.jsアプリです。ファイルをアップロードして、その内容に関する質問をすることができ、アプリは埋め込みとGPTを使用して、最も関連性の高いファイルから回答を生成します。
+File Q&A は、OpenAI API を使用してファイルの中から答えを見つけることができる Next.js のアプリです。ファイルをアップロードして、その内容に関する質問をすることができ、アプリは埋め込みとGPTを使用して、最も関連性の高いファイルから回答を生成します。
 
 このリポジトリには、2つのバージョンのアプリが含まれています。
 
-- `/nextjs`:ブラウザ内でローカルに埋め込みを保存するスタンドアロンのNext.jsアプリです。このアプリを使用するには、OpenAI APIキーが必要です。詳細については、 [README](./nextjs/README.md)を読んでください。
-- `/nextjs-with-flask-server`:Flaskサーバーをプロキシとして使用してOpenAI APIにアクセスし、Pineconeをベクターデータベースとして使用するNext.jsアプリです。このアプリを使用するには、OpenAI APIキーとPinecone APIキーが必要です。詳細については [README](./nextjs-with-flask-server/README.md)を読んでください。
+- `/nextjs` : ブラウザ内でローカルに埋め込みを保存するスタンドアロンのNext.jsアプリです。このアプリを使用するには、OpenAI API キーが必要です。詳細については、 [README](./nextjs/README.md) を読んでください。
+- `/nextjs-with-flask-server` : Flaskサーバーをプロキシとして使用して OpenAI API にアクセスし、Pinecone をベクターデータベースとして使用するNext.jsアプリです。このアプリを使用するには、OpenAI API キーと Pinecone API ーが必要です。詳細については [README](./nextjs-with-flask-server/README.md) を読んでください。
 
 アプリのいずれかのバージョンを実行するには、それぞれのサブディレクトリのREADME.mdファイルに記載された手順に従ってください。
 
