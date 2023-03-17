@@ -250,6 +250,10 @@ def split_into_many(text, max_tokens = max_tokens):
         chunk.append(sentence)
         tokens_so_far += token + 1
 
+    # Add the last chunk to the list of chunks
+    if chunk:
+        chunks.append(". ".join(chunk) + ".")
+        
     return chunks
     
 
