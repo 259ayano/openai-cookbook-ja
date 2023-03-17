@@ -20,7 +20,7 @@ GPT-3のテキストに対する理解を活用し、これらの埋め込みは
 * 検索を行う前（precompute）:
   * テキストコーパスをトークン制限（`text-embedding-ada-002` は 8,191 トークン）より小さいチャンクに分割する。
   * 各チャンクのテキストを埋め込む
-  * 埋め込み情報を自分のデータベースか、[Pinecone](https://www.pinecone.io) や [Weaviate](https://weaviate.io) などのベクトル検索プロバイダに保存する。
+  * 埋め込み情報を自分のデータベースか、[Pinecone](https://www.pinecone.io) 、 [Weaviate](https://weaviate.io) や[Qdrant](https://qdrant.tech)などのベクトル検索プロバイダに保存する。
 * 検索時（livecompute）:
   * 検索クエリを埋め込む
   * データベースから最も近い埋め込みを探す
