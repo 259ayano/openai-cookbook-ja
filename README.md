@@ -4,6 +4,8 @@
 これらの例を実行するには、OpenAI アカウントと関連する API キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。  
 
+[[GitHubコードスペースで開く]](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
+
 ## 最近追加された項目 🆕 ✨
 
 - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb) [Mar 1st, 2023]
@@ -47,6 +49,7 @@
 * DALL-E
   * [DALL-Eで画像を生成および編集する方法](examples/dalle/Image_generations_edits_and_variations_with_DALL-E.ipynb)
 * Azure OpenAI (Microsoft Azureの代替API)
+  * [Azure OpenAIでChatGPTを使う方法](examples/azure/chat.ipynb)
   * [Azure OpenAI から入力候補を取得する方法](examples/azure/completions.ipynb)
   * [Azure OpenAI から埋め込みを取得する方法](examples/azure/embeddings.ipynb)
   * [Azure OpenAI で GPT-3 を微調整する方法](examples/azure/finetuning.ipynb)
