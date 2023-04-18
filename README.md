@@ -11,7 +11,6 @@
 - [Using vector databases for embeddings search](examples/vector_databases/) [various dates]
 - [Powering your products with ChatGPT and your own data](apps/chatbot-kickstarter/powering_your_products_with_chatgpt_and_your_data.ipynb) [Mar 10th, 2023]
 - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb) [Mar 1st, 2023]
-- [Using Vector Databases for Embeddings Search with Redis](https://github.com/openai/openai-cookbook/tree/main/examples/vector_databases/redis) [Feb 15th, 2023]
 - [Website Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/web-crawl-q-and-a) [Feb 11th, 2023]
 - [File Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/file-q-and-a) [Feb 11th, 2023]
 - [Visualize Embeddings in Weights & Biases](https://github.com/openai/openai-cookbook/blob/main/examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
