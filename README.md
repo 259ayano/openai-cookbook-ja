@@ -1,13 +1,15 @@
 # OpenAI Cookbook とは
 
 [OpenAI Cookbook](https://github.com/openai/openai-cookbook) では、[OpenAI API] を使用して一般的なタスクを実行するためのサンプルコードを共有します。  
-これらの例を実行するには、OpenAI アカウントと関連する API キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
+これらの例を実行するには、OpenAI アカウントとAPI キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。  
 
 [[GitHubコードスペースで開く]](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
-## 最近追加された項目 🆕 ✨
-
+## 最近追加・更新された項目 🆕 ✨
+- [Question answering using embeddings](examples/Question_answering_using_embeddings.ipynb) [Apr 14th, 2023]
+- [Using vector databases for embeddings search](examples/vector_databases/) [various dates]
+- [Powering your products with ChatGPT and your own data](apps/chatbot-kickstarter/powering_your_products_with_chatgpt_and_your_data.ipynb) [Mar 10th, 2023]
 - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb) [Mar 1st, 2023]
 - [Using Vector Databases for Embeddings Search with Redis](https://github.com/openai/openai-cookbook/tree/main/examples/vector_databases/redis) [Feb 15th, 2023]
 - [Website Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/web-crawl-q-and-a) [Feb 11th, 2023]
@@ -85,6 +87,6 @@
 [OpenAI Blog]: https://openai.com/blog/
 [issues page]: https://github.com/openai/openai-cookbook/issues
 
-![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3Db2d2b57a349df25ab74027b4e434e943d7abdc72)
+![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3D091e8e85796065d54fe29a1ab3ae8441cf954d9a)
 
 
