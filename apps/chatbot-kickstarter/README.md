@@ -3,7 +3,7 @@
 本 Chatbot Kickstarter は、ChatGPT APIと自分の知識ベースを使って基本的なChatbotを作るのに慣れるためのスタートアップレポートです。このレポートは、もともと[those slides](https://drive.google.com/file/d/1dB-RQhZC_Q1iAsHkNNdkqtxxXqYODFYy/view?usp=share_link)で紹介したもので、参考にすると便利かもしれません。
 
 このレポートには、1つのノートブックと2つの基本的なStreamlitアプリが含まれています：
-- Powering_your_products_with_chatgpt_and_your_data.ipynb`： トークン化、チャンキング、ベクターデータベースへの埋め込み、そしてシンプルなQ&Aやチャットボット機能の構築のステップバイステップのプロセスを含むノートブックです。
+- `Powering_your_products_with_chatgpt_and_your_data.ipynb`： トークン化、チャンキング、ベクターデータベースへの埋め込み、そしてシンプルなQ&Aやチャットボット機能の構築のステップバイステップのプロセスを含むノートブックです。
 - `search.py`： ナレッジベースを検索するための検索バーを介して、シンプルなQ&Aを提供するStreamlitアプリです。
 - `chat.py`： ナレッジベースを検索するための検索バーを介して、シンプルなチャットボットを提供するStreamlitアプリです。
 
