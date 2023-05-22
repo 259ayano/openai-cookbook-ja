@@ -6,11 +6,11 @@
 
 [[GitHubコードスペースで開く]](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
-## 最近追加・更新された項目 🆕 ✨
+## 最近追加 / 更新された項目 🆕 ✨
+- [Embeddings playground (streamlit app)](apps/embeddings-playground/README.md) [May 19th, 2023]
+- [How to use a multi-step prompt to write unit tests](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
+- [How to create dynamic masks with DALL·E and Segment Anything](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19th, 2023]
 - [Question answering using embeddings](examples/Question_answering_using_embeddings.ipynb) [Apr 14th, 2023]
-- [Using vector databases for embeddings search](examples/vector_databases/) [various dates]
-- [Powering your products with ChatGPT and your own data](apps/chatbot-kickstarter/powering_your_products_with_chatgpt_and_your_data.ipynb) [Mar 10th, 2023]
-- [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb) [Mar 1st, 2023]
 - [Website Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/web-crawl-q-and-a) [Feb 11th, 2023]
 - [File Q&A with Embeddings](https://github.com/openai/openai-cookbook/tree/main/apps/file-q-and-a) [Feb 11th, 2023]
 - [Visualize Embeddings in Weights & Biases](https://github.com/openai/openai-cookbook/blob/main/examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
@@ -19,22 +19,15 @@
 ## ガイドとサンプル
 
 * API の使い方
-  * [How to handle rate limits](examples/How_to_handle_rate_limits.ipynb)
-    * [Example parallel processing script that avoids hitting rate limits](examples/api_request_parallel_processor.py)
-  * [How to count tokens with tiktoken](examples/How_to_count_tokens_with_tiktoken.ipynb)
-  * [How to stream completions](examples/How_to_stream_completions.ipynb)
-- ChatGPT
-  - [How to format inputs to ChatGPT models](examples/How_to_format_inputs_to_ChatGPT_models.ipynb)
-* GPT-3
+  * [レート制限の取り扱いについて](examples/How_to_handle_rate_limits.ipynb)
+    * [レート制限にかからないようにする並列処理スクリプトの例](examples/api_request_parallel_processor.py)
+  * [tiktokenを使ったトークンの数え方](examples/How_to_count_tokens_with_tiktoken.ipynb)
+* GPT
+  * [ChatGPTモデルへの入力のフォーマット方法](examples/How_to_format_inputs_to_ChatGPT_models.ipynb)
+  * [完成品のストリーミング方法](examples/How_to_stream_completions.ipynb)
+  * [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb)
   * [ガイド: 大規模な言語モデルを操作する方法](how_to_work_with_large_language_models.md)
   * [ガイド: 信頼性を向上させるテクニック](techniques_to_improve_reliability.md)
-  * [複数ステップのプロンプトを使用して単体テストを記述する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb)
-  * [テキストを書く例](text_writing_examples.md)
-  * [テキストを説明する例](text_explanation_examples.md)
-  * [テキストを編集する例](text_editing_examples.md)
-  * [コードを書く例](code_writing_examples.md)
-  * [コードを説明する例](code_explanation_examples.md)
-  * [コードを編集の例](code_editing_examples.md)
 * 埋め込み
   * [テキスト比較の例](text_comparison_examples.md)
   * [埋め込みを取得する方法](examples/Get_embeddings.ipynb)
@@ -44,19 +37,18 @@
   * [クラスタリング埋め込み](examples/Clustering.ipynb)
   * 埋め込みを[2D](examples/Visualizing_embeddings_in_2D.ipynb) または [3D](examples/Visualizing_embeddings_in_3D.ipynb)で視覚化する
   * [テキスト (長) の埋め込み](examples/Embedding_long_inputs.ipynb)
+  * [Embeddings playground (streamlit app)](apps/embeddings-playground/README.md) [May 19th, 2023]
 * GPT-3の微調整
   * [ガイド:テキストを分類するためにGPT-3を微調整するためのベストプラクティス](https://docs.google.com/document/d/1rqj7dkuvl7Byd5KQPUJRxc19BJt8wo0yHNwK84KfU3Q/edit)
   * [微調整された分類](examples/Fine-tuned_classification.ipynb)
 * DALL-E
-  * [DALL-Eで画像を生成および編集する方法](examples/dalle/Image_generations_edits_and_variations_with_DALL-E.ipynb)
+  * [DALL・Eで画像を生成および編集する方法](examples/dalle/Image_generations_edits_and_variations_with_DALL-E.ipynb)
+  * [DALL-EとSegment Anythingを使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb)
 * Azure OpenAI (Microsoft Azureの代替API)
   * [Azure OpenAIでChatGPTを使う方法](examples/azure/chat.ipynb)
   * [Azure OpenAI から入力候補を取得する方法](examples/azure/completions.ipynb)
   * [Azure OpenAI から埋め込みを取得する方法](examples/azure/embeddings.ipynb)
   * [Azure OpenAI で GPT-3 を微調整する方法](examples/azure/finetuning.ipynb)
-- Apps
-  - [File Q and A](apps/file-q-and-a/)
-  - [Web Crawl Q and A](apps/web-crawl-q-and-a)
 
 ## 関連リソース
 
@@ -86,6 +78,6 @@
 [OpenAI Blog]: https://openai.com/blog/
 [issues page]: https://github.com/openai/openai-cookbook/issues
 
-![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3D091e8e85796065d54fe29a1ab3ae8441cf954d9a)
+![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3D28ab8b5c44851fe99cb90a962d41095cf9525940)
 
 
