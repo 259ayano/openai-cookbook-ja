@@ -106,11 +106,13 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 - [Tree of Thoughts: Deliberate Problem Solving with Large Language Models (2023)](https://arxiv.org/abs/2305.10601): ステップバイステップの推論のツリーを検索することは、思考の鎖を投票すること以上に役立ちます。GPT-4`の創作活動やクロスワードのスコアを引き上げています。
 - [Language Models are Zero-Shot Reasoners (2022)](https://arxiv.org/abs/2205.11916): 指示追従型モデルに段階的に考えるよう指示することで、推理力が向上します。text-davinci-002`の数学の単語問題（GSM8K）のスコアを13%から41%に引き上げます。
 - [Large Language Models Are Human-Level Prompt Engineers (2023)](https://arxiv.org/abs/2211.01910): プロンプトの候補を自動検索したところ、数学の単語問題（GSM8K）のスコアを43%に引き上げ、「言語モデルはゼロショット推論機」の人力プロンプトを2ポイント上回るプロンプトを発見しました。
+- [Reprompting: Automated Chain-of-Thought Prompt Inference Through Gibbs Sampling (2023)](https://arxiv.org/abs/2305.09993):ChatGPTのスコアは、いくつかのベンチマークで0～20%ポイント向上しました。
 - [Faithful Reasoning Using Large Language Models (2022)](https://arxiv.org/abs/2208.14271): 選択と推論のプロンプトによって生成される思考の連鎖、選択と推論のループを停止するタイミングを選択するハルターモデル、複数の推論経路を探索する価値関数、幻覚を避けるための文章ラベルなどを組み合わせたシステムによって、推論を改善することができます。
 - [STaR: Bootstrapping Reasoning With Reasoning (2022)](https://arxiv.org/abs/2203.14465): 思考の連鎖の推論は、ファインチューニングによってモデルに焼き付けることができます。答えのあるタスクの場合、言語モデルによって思考の連鎖の例を生成することができます。
 - [ReAct: Synergizing Reasoning and Acting in Language Models (2023)](https://arxiv.org/abs/2210.03629): 道具や環境があるタスクの場合、「Re（推論）」（何をすべきか考える）と「Act（演技）」（道具や環境から情報を得る）を規定的に交互に行うことで、思考の連鎖がうまく機能します。
 - [Reflexion: an autonomous agent with dynamic memory and self-reflection (2023)](https://arxiv.org/abs/2303.11366): 過去の失敗を記憶している状態でタスクに再挑戦すると、その後のパフォーマンスが向上します。
 - [Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP (2023)](https://arxiv.org/abs/2212.14024): 「検索して読む」によって知識を増強したモデルは、マルチホップチェーンの検索で改善することができます。
+- [Improving Factuality and Reasoning in Language Models through Multiagent Debate (2023)](https://arxiv.org/abs/2305.14325): 数人のChatGPTエージェントが数ラウンドにわたってディベートを行うことで、様々なベンチマークのスコアが向上しました。数学の単語問題のスコアは77%から85%に上昇しました。
 
 ## 貢献する
 
@@ -128,6 +130,6 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 [OpenAI Blog]: https://openai.com/blog/
 [issues page]: https://github.com/openai/openai-cookbook/issues
 
-![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3D2083791aa8027dcbea43fba5dd1cb72422fe37b7)
+![badge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgezf7g7pd5.execute-api.ap-northeast-1.amazonaws.com%2Fdefault%2Fsource_up_to_date%3Fowner%3Dopenai%26repos%3Dopenai-cookbook%26ref%3Dmain%26path%3DREADME.md%26commit_hash%3D59c12ef6dc5ce21ed1f0c83042a70dfeb88084ed)
 
 
