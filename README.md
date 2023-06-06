@@ -7,15 +7,15 @@
 [![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
 ## 最近追加 / 更新された項目 🆕 ✨
-- [ウェブ上の関連資料](https://github.com/openai/openai-cookbook#related-resources-from-around-the-web) [May 22, 2023]
+- [ウェブ上の関連資料](#ウェブ上の関連資料) [May 22, 2023]
 - [埋め込みのplayground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
 - [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
 - [DALL·EとSegment Anythingを使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19, 2023]
 - [埋め込みを使用した質問応答](examples/Question_answering_using_embeddings.ipynb) [Apr 14, 2023]
-- [埋め込みによるウェブサイトQ&A](https://github.com/openai/openai-cookbook/tree/main/apps/web-crawl-q-and-a) [Feb 11th, 2023]
-- [埋め込みによるファイルQ&A](https://github.com/openai/openai-cookbook/tree/main/apps/file-q-and-a) [Feb 11th, 2023]
-- [重みとバイアスの埋め込みを可視化する](https://github.com/openai/openai-cookbook/blob/main/examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
-- [松ぼっくりを使った検索強化型生成質問応答](https://github.com/openai/openai-cookbook/blob/main/examples/vector_databases/pinecone/Gen_QA.ipynb) [Feb 8th, 2023]
+- [埋め込みによるウェブサイトQ&A](apps/web-crawl-q-and-a) [Feb 11th, 2023]
+- [埋め込みによるファイルQ&A](apps/file-q-and-a) [Feb 11th, 2023]
+- [重みとバイアスの埋め込みを可視化する](examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
+- [松ぼっくりを使った検索強化型生成質問応答](examples/vector_databases/pinecone/Gen_QA.ipynb) [Feb 8th, 2023]
 
 ## ガイドとサンプル
 
@@ -91,7 +91,7 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 
 - [Brex's Prompt Engineering Guide](https://github.com/brexhq/prompt-engineering): ブレックスの言語モデルやプロンプトエンジニアリングの紹介です。
 - [promptingguide.ai](https://www.promptingguide.ai/): 多くのテクニックを披露するプロンプトエンジニアリングガイドです。
-- [OpenAI Cookbook: Techniques to improve reliability](https://github.com/openai/openai-cookbook/blob/main/techniques_to_improve_reliability.md): 言語モデルをプロンプト化する技術について、少し古い（2022年9月）レビューです。
+- [OpenAI Cookbook: Techniques to improve reliability](techniques_to_improve_reliability.md): 言語モデルをプロンプト化する技術について、少し古い（2022年9月）レビューです。
 - [Lil'Log Prompt Engineering](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/): OpenAI研究員によるプロンプトエンジニアリング文献のレビューです。（2023年3月現在）。
 - [learnprompting.org](https://learnprompting.org/): プロンプトエンジニアリングの入門コースです。
 
