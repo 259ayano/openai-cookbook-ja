@@ -4,7 +4,7 @@
 これらの例を実行するには、OpenAI アカウントとAPI キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。  
 
-[[GitHubコードスペースで開く]](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
+[![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
 ## 最近追加 / 更新された項目 🆕 ✨
 - [ウェブ上の関連資料](https://github.com/openai/openai-cookbook#related-resources-from-around-the-web) [May 22, 2023]
