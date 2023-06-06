@@ -79,11 +79,13 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 - [Chainlit](https://docs.chainlit.io/overview): チャットボットのインターフェースを作るためのPythonライブラリです。
 - [Guardrails.ai](https://shreyar.github.io/guardrails/): 出力を検証し、失敗を再試行するための Python ライブラリです。まだアルファ版なので、鋭利な部分やバグがあることを予測してください。
 - [Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/): Microsoftが提供するPython/C#ライブラリで、プロンプトテンプレート、関数チェイニング、ベクトル化メモリ、インテリジェントプランニングをサポートしています。
+- [Outlines](https://github.com/normal-computing/outlines)： プロンプトと制約の生成を簡略化するためのドメイン固有言語を提供するPythonライブラリ。
 - [Promptify](https://github.com/promptslab/Promptify): 言語モデルを使用してNLPタスクを実行するための小さなPythonライブラリです。
 - [Scale Spellbook](https://scale.com/spellbook): 言語モデルアプリを構築、比較、出荷するための有償製品です。
 - [PromptPerfect](https://promptperfect.jina.ai/prompts): プロンプトをテスト・改善するための有償製品です。
 - [Weights & Biases](https://wandb.ai/site/solutions/llmops): トラッキングモデルのトレーニングやプロンプトエンジニアリング実験用の有償製品です。
 - [OpenAI Evals](https://github.com/openai/evals): 言語モデルやプロンプトのタスク性能を評価するためのオープンソースライブラリです。
+- [LlamaIndex](https://github.com/jerryjliu/llama_index): LLMアプリをプライベートデータ（個人、組織）で補強するためのPythonライブラリです。
 
 ### プロンプティングガイド
 
