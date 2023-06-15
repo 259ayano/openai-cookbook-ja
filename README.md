@@ -7,15 +7,11 @@
 [![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
 ## 最近追加 / 更新された項目 🆕 ✨
+- [How to call functions with Chat models](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_call_functions_with_chat_models.ipynb) [June 13th, 2023]
 - [ウェブ上の関連資料](#ウェブ上の関連資料) [May 22, 2023]
 - [埋め込みのplayground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
 - [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
 - [DALL·EとSegment Anythingを使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19, 2023]
-- [埋め込みを使用した質問応答](examples/Question_answering_using_embeddings.ipynb) [Apr 14, 2023]
-- [埋め込みによるウェブサイトQ&A](apps/web-crawl-q-and-a) [Feb 11th, 2023]
-- [埋め込みによるファイルQ&A](apps/file-q-and-a) [Feb 11th, 2023]
-- [重みとバイアスの埋め込みを可視化する](examples/Visualizing_embeddings_in_W%26B.ipynb) [Feb 9th, 2023]
-- [松ぼっくりを使った検索強化型生成質問応答](examples/vector_databases/pinecone/Gen_QA.ipynb) [Feb 8th, 2023]
 
 ## ガイドとサンプル
 
