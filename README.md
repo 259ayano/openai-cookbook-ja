@@ -50,7 +50,8 @@
   * [Azure OpenAIでChatGPTを使う方法](examples/azure/chat.ipynb)
   * [Azure OpenAI から入力候補を取得する方法](examples/azure/completions.ipynb)
   * [Azure OpenAI から埋め込みを取得する方法](examples/azure/embeddings.ipynb)
-
+  - [How to generate images with DALL·E fom Azure OpenAI](examples/azure/DALL-E.ipynb)
+  - 
 ## 関連する OpenAI のリソース
 
 ここにあるコード例以外にも、次のリソースから [OpenAI API] について学ぶことができます。
@@ -82,7 +83,9 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 - [Weights & Biases](https://wandb.ai/site/solutions/llmops): トラッキングモデルのトレーニングやプロンプトエンジニアリング実験用の有償製品です。
 - [OpenAI Evals](https://github.com/openai/evals): 言語モデルやプロンプトのタスク性能を評価するためのオープンソースライブラリです。
 - [LlamaIndex](https://github.com/jerryjliu/llama_index): LLMアプリをプライベートデータ（個人、組織）で補強するためのPythonライブラリです。
-
+- [Arthur Shield](https://www.arthur.ai/get-started): A paid product for detecting toxicity, hallucination, prompt injection, etc.
+- [LMQL](https://lmql.ai): A programming language for LLM interaction with support for typed prompting, control flow, constraints, and tools.
+- 
 ### プロンプティングガイド
 
 - [Brex's Prompt Engineering Guide](https://github.com/brexhq/prompt-engineering): ブレックスの言語モデルやプロンプトエンジニアリングの紹介です。
