@@ -8,8 +8,8 @@
 
 ## 最近追加 / 更新された項目 🆕 ✨
 - [Whisper prompting guide](examples/Whisper_prompting_guide.ipynb) [June 27, 2023]
-- [Question answering using a search API and re-ranking](https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_a_search_API.ipynb) [June 16, 2023]
-- [How to call functions with Chat models](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_call_functions_with_chat_models.ipynb) [June 13, 2023]
+- [Question answering using a search API and re-ranking](examples/Question_answering_using_a_search_API.ipynb) [June 16, 2023]
+- [How to call functions with Chat models](examples/How_to_call_functions_with_chat_models.ipynb) [June 13, 2023]
 - [ウェブ上の関連資料](#ウェブ上の関連資料) [May 22, 2023]
 - [埋め込みの playground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
 - [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
