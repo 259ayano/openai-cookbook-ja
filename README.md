@@ -7,11 +7,13 @@
 [![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
 ## 最近追加 / 更新された項目 🆕 ✨
-- [How to call functions with Chat models](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_call_functions_with_chat_models.ipynb) [June 13th, 2023]
+- [Whisper prompting guide](examples/Whisper_prompting_guide.ipynb) [June 27, 2023]
+- [Question answering using a search API and re-ranking](https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_a_search_API.ipynb) [June 16, 2023]
+- [How to call functions with Chat models](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_call_functions_with_chat_models.ipynb) [June 13, 2023]
 - [ウェブ上の関連資料](#ウェブ上の関連資料) [May 22, 2023]
-- [埋め込みのplayground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
+- [埋め込みの playground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
 - [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
-- [DALL·EとSegment Anythingを使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19, 2023]
+- [DALL·E と Segment Anything を使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19, 2023]
 
 ## ガイドとサンプル
 
@@ -46,6 +48,8 @@
 * DALL-E
   * [DALL·Eで画像を生成および編集する方法](examples/dalle/Image_generations_edits_and_variations_with_DALL-E.ipynb)
   * [DALL·EとSegment Anythingを使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb)
+* Whisper
+  - [Whisper prompting guide](examples/Whisper_prompting_guide.ipynb)
 * Azure OpenAI (Microsoft Azureの代替API)
   * [Azure OpenAIでChatGPTを使う方法](examples/azure/chat.ipynb)
   * [Azure OpenAI から入力候補を取得する方法](examples/azure/completions.ipynb)
