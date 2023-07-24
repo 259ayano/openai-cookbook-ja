@@ -1,47 +1,47 @@
-# Next.jsとFlaskによるファイルQ&A
+# File Q&A with Next.js and Flask
 
-ファイルQ&Aは、ファイルの中から答えを見つけることができるウェブアプリです。ファイルをアップロードして、その内容に関連する質問をすると、アプリは埋め込みとGPTを使って、最も関連性の高いファイルから回答を生成します。
+File Q&A is a web app that lets you find answers in your files. You can upload files and ask questions related to their content, and the app will use embeddings and GPT to generate answers from the most relevant files. \
 
-## 要件
+## Requirements
 
-アプリを実行するために必要なのは
+To run the app, you need:
 
-- OpenAI APIキー。新しいAPIキーは、[こちら](https://beta.openai.com/account/api-keys)で作成できます。
-- Pinecone APIキーとインデックス名。新しいアカウントとインデックスを作成することができます [こちら](https://www.pinecone.io/).
-- Python3.7以上とFlaskサーバー用のpipenv。
-- Next.jsクライアントには、Node.jsとnpmが必要です。
+- An OpenAI API key. You can create a new API key [here](https://beta.openai.com/account/api-keys).
+- A Pinecone API key and index name. You can create a new account and index [here](https://www.pinecone.io/).
+- Python 3.7 or higher and pipenv for the Flask server.
+- Node.js and npm for the Next.js client.
 
-## セットアップと開発
+## Set-Up and Development
 
-### サーバー
+### Server
 
-config.yaml ファイルに Pinecone API キー、インデックス名、環境を記入します。
+Fill out the config.yaml file with your Pinecone API key, index name and environment.
 
-Flaskサーバを実行します。
+Run the Flask server:
 
 ```
 cd server
 bash script/start "<your OPENAI_API_KEY>"
 ```
 
-### クライアント
+### Client
 
-クライアントディレクトリに移動し、Nodeの依存関係をインストールします。
+Navigate to the client directory and install Node dependencies:
 
 ```
 cd client
 npm install
 ```
 
-Next.jsクライアントを実行します。
+Run the Next.js client:
 
 ```
 cd client
 npm run dev
 ```
 
-ブラウザで[http://localhost:3000](http://localhost:3000)を開くと、アプリが表示されます。
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
-## 制限事項
+## Limitations
 
-こちらのアプリは、ファイルにない答えを生成したり、アップロードされていないファイルの存在を幻視することが時々あります。
+The app may sometimes generate answers that are not in the files, or hallucinate about the existence of files that are not uploaded.

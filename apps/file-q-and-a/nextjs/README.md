@@ -1,39 +1,39 @@
-# ファイルQ&A
+# File Q&A
 
-ファイルQ&Aは、OpenAI APIを使ってファイルの中から答えを探すことができる[Next.js](https://nextjs.org/)アプリです。ファイルをアップロードして、その内容に関連した質問をすると、アプリは埋め込みとGPTを使って、最も関連性の高いファイルから答えを生成します。
+File Q&A is a [Next.js](https://nextjs.org/) app that lets you find answers in your files using OpenAI APIs. You can upload files and ask questions related to their content, and the app will use embeddings and GPT to generate answers from the most relevant files.
 
-## 要件
+## Requirements
 
-アプリを実行するには、OpenAI APIキーが必要です。新しいAPIキーは[こちら](https://beta.openai.com/account/api-keys)で作成することができます。
+To run the app, you need an OpenAI API key. You can create a new API key [here](https://beta.openai.com/account/api-keys).
 
-## セットアップ
+## Set Up
 
-Node.jsとnpmをまだ持っていない場合は、[https://nodejs.org/en/download/](https://nodejs.org/en/download/)からインストールします。
+If you don't have Node.js and npm already, install them from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
 
-ターミナルで、このサンプルアプリの `nextjs` ディレクトリに移動し、依存関係をインストールします。
+In your terminal, navigate to the `nextjs` directory of this example app, and then install dependencies:
 
 ```
 npm install
 ```
 
-.env.local.example ファイルを .env.local ファイルにコピーし、OpenAI API キー欄を記入します。
+Copy the .env.local.example file into a .env.local file and fill out the OpenAI API key field.
 
-## 開発
+## Development
 
-開発用サーバーを起動します。
+Run the development server:
 
 ```
 npm run dev
 ```
 
-ブラウザで[http://localhost:3000](http://localhost:3000)を開くとアプリが表示されます。
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
-## デプロイメント
+## Deployment
 
-Next.jsのクリエイターによるプラットフォームである[Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)上にアプリをデプロイすることができます。詳しくは、[Next.js デプロイメントドキュメント](https://nextjs.org/docs/deployment) をご覧ください。
+You can deploy the app on [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), the platform from the creators of Next.js. Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## 制限事項
+## Limitations
 
-アップロードされたファイルや生成された埋め込みは、ブラウザのリフレッシュ時に保持されません。より多くの埋め込みデータを保存したい場合は、ベクターデータベース（Pinecone, Weaviate, Milvus, Qdrant, Redis, FAISSなど）の利用をお勧めします。このデモの `nextjs-with-flask-server` バージョンでは、Pinecone ベクターデータベースを使用しています。
+Uploaded files and generated embeddings don't persist on browser refresh. If you want to store more embeddings, we recommend using a vector database (e.g. Pinecone, Weaviate, Milvus, Qdrant, Redis, FAISS, etc.). The `nextjs-with-flask-server` version of this demo uses a Pinecone vector database.
 
-こちらのアプリは、ファイルにない答えを生成したり、アップロードされていないファイルの存在を幻視することが時々あります。
+The app may sometimes generate answers that are not in the files, or hallucinate about the existence of files that are not uploaded.
