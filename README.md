@@ -38,6 +38,7 @@
   * 埋め込みを[2D](examples/Visualizing_embeddings_in_2D.ipynb) または [3D](examples/Visualizing_embeddings_in_3D.ipynb)で視覚化する
   * [テキスト (長) の埋め込み](examples/Embedding_long_inputs.ipynb)
   * [埋め込みのplayground (streamlit app)](apps/embeddings-playground/README.md)
+  * [Search reranking with cross-encoders](examples/Search_reranking_with_cross-encoders.ipynb)
 * アプリ
   * [ファイル Q&A](apps/file-q-and-a/)
   * [Webクロール Q&A](apps/web-crawl-q-and-a)
