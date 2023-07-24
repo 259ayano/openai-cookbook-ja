@@ -31,7 +31,7 @@
   * [テキスト比較の例](text_comparison_examples.md)
   * [埋め込みを取得する方法](examples/Get_embeddings.ipynb)
   * [埋め込みを使用した質問応答](examples/Question_answering_using_embeddings.ipynb)
-  * [埋め込み検索のためのベクトルデータベースの利用](examples/vector_databases/Using_vector_databases_for_embeddings_search.ipynb)
+  * [埋め込み検索のためのベクトルデータベースの利用](examples/vector_databases)
   * [埋め込みを使用したセマンティック検索](examples/Semantic_text_search_using_embeddings.ipynb)
   * [埋め込みを使用した推奨事項](examples/Recommendation_using_embeddings.ipynb)
   * [クラスタリング埋め込み](examples/Clustering.ipynb)
