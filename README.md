@@ -7,13 +7,11 @@
 [![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
 
 ## 最近追加 / 更新された項目 🆕 ✨
+- [How to fine-tune chat models](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_finetune_chat_models.ipynb) [Aug 22, 2023]
+- [How to evaluate abstractive summarization](examples/evaluation/How_to_eval_abstractive_summarization.ipynb) [Aug 16, 2023]
 - [Whisper prompting guide](examples/Whisper_prompting_guide.ipynb) [June 27, 2023]
 - [Question answering using a search API and re-ranking](examples/Question_answering_using_a_search_API.ipynb) [June 16, 2023]
 - [How to call functions with Chat models](examples/How_to_call_functions_with_chat_models.ipynb) [June 13, 2023]
-- [ウェブ上の関連資料](#ウェブ上の関連資料) [May 22, 2023]
-- [埋め込みの playground (streamlit app)](apps/embeddings-playground/README.md) [May 19, 2023]
-- [ユニットテストを書くためにマルチステッププロンプトを使用する方法](examples/Unit_test_writing_using_a_multi-step_prompt.ipynb) [May 19, 2023]
-- [DALL·E と Segment Anything を使ったダイナミックマスクの作り方](examples/dalle/How_to_create_dynamic_masks_with_DALL-E_and_Segment_Anything.ipynb) [May 19, 2023]
 
 ## ガイドとサンプル
 
@@ -81,6 +79,7 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 - [Chainlit](https://docs.chainlit.io/overview): チャットボットのインターフェースを作るためのPythonライブラリです。
 - [Guardrails.ai](https://shreyar.github.io/guardrails/): 出力を検証し、失敗を再試行するための Python ライブラリです。まだアルファ版なので、鋭利な部分やバグがあることを予測してください。
 - [Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/): Microsoftが提供するPython/C#ライブラリで、プロンプトテンプレート、関数チェイニング、ベクトル化メモリ、インテリジェントプランニングをサポートしています。
+- [Prompttools](https://github.com/hegelai/prompttools): Open-source Python tools for testing and evaluating models, vector DBs, and prompts.
 - [Outlines](https://github.com/normal-computing/outlines)： プロンプトと制約の生成を簡略化するためのドメイン固有言語を提供するPythonライブラリ。
 - [Promptify](https://github.com/promptslab/Promptify): 言語モデルを使用してNLPタスクを実行するための小さなPythonライブラリです。
 - [Scale Spellbook](https://scale.com/spellbook): 言語モデルアプリを構築、比較、出荷するための有償製品です。
