@@ -79,7 +79,7 @@ GPTの出力を向上させるために、人々は素晴らしいツールや�
 - [Chainlit](https://docs.chainlit.io/overview): チャットボットのインターフェースを作るためのPythonライブラリです。
 - [Guardrails.ai](https://shreyar.github.io/guardrails/): 出力を検証し、失敗を再試行するための Python ライブラリです。まだアルファ版なので、鋭利な部分やバグがあることを予測してください。
 - [Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/): Microsoftが提供するPython/C#ライブラリで、プロンプトテンプレート、関数チェイニング、ベクトル化メモリ、インテリジェントプランニングをサポートしています。
-- [Prompttools](https://github.com/hegelai/prompttools): Open-source Python tools for testing and evaluating models, vector DBs, and prompts.
+- [Prompttools](https://github.com/hegelai/prompttools): モデルやベクターデータベース、プロンプトのテストや評価に使用されるオープンソースの Python ツール。
 - [Outlines](https://github.com/normal-computing/outlines)： プロンプトと制約の生成を簡略化するためのドメイン固有言語を提供するPythonライブラリ。
 - [Promptify](https://github.com/promptslab/Promptify): 言語モデルを使用してNLPタスクを実行するための小さなPythonライブラリです。
 - [Scale Spellbook](https://scale.com/spellbook): 言語モデルアプリを構築、比較、出荷するための有償製品です。
