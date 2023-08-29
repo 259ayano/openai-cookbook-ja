@@ -32,8 +32,8 @@ GPT-3のテキストに対する理解を活用し、これらの埋め込みは
 
 ## 質問応答
 
-GPT-3 から信頼性の高い回答を得るための最良の方法は、GPT-3 が正しい回答を見つけることができるような原文を与えることである。上記のセマンティック検索を用いると、関連する情報のために文書のコーパスを安価に検索し、その情報をプロンプトを介してGPT-3に与え、質問に回答させることができる。
-[Question_answering_using_embeddings.ipynb](examples/Question_answering_using_embeddings.ipynb) でデモを行っています。
+GPT-3 から信頼性の高い回答を得るための最良の方法は、GPT-3 が正しい回答を見つけることができるような原文を与えることです。上記のセマンティック検索を用いると、関連する情報のために文書のコーパスを安価に検索し、質問に答えるプロンプトを通して GPT-3にその情報を与えることができます。
+これを [Question_answering_using_embeddings.ipynb](examples/Question_answering_using_embeddings.ipynb) で示します。
 
 ## レコメンデーション
 
