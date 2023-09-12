@@ -1,35 +1,35 @@
-# ChatGPTと自社データで製品をパワーアップさせる
+# Powering your products with ChatGPT and your own data
 
-本 Chatbot Kickstarter は、ChatGPT APIと自分の知識ベースを使って基本的なChatbotを作るのに慣れるためのスタートアップレポートです。このレポートは、もともと[those slides](https://drive.google.com/file/d/1dB-RQhZC_Q1iAsHkNNdkqtxxXqYODFYy/view?usp=share_link)で紹介したもので、参考にすると便利かもしれません。
+The Chatbot Kickstarter is a starter repo to get you used to building a basic Chatbot using the ChatGPT API and your own knowledge base. The flow you're taken through was originally presented with [these slides](https://drive.google.com/file/d/1dB-RQhZC_Q1iAsHkNNdkqtxxXqYODFYy/view?usp=share_link), which may come in useful to refer to. 
 
-このレポートには、1つのノートブックと2つの基本的なStreamlitアプリが含まれています：
-- `Powering_your_products_with_chatgpt_and_your_data.ipynb`： トークン化、チャンキング、ベクターデータベースへの埋め込み、そしてシンプルなQ&Aやチャットボット機能の構築のステップバイステップのプロセスを含むノートブックです。
-- `search.py`： ナレッジベースを検索するための検索バーを介して、シンプルなQ&Aを提供するStreamlitアプリです。
-- `chat.py`： ナレッジベースを検索するための検索バーを介して、シンプルなチャットボットを提供するStreamlitアプリです。
+This repo contains one notebook and two basic Streamlit apps:
+- `powering_your_products_with_chatgpt_and_your_data.ipynb`: A notebook containing a step by step process of tokenising, chunking and embedding your data in a vector database, and building simple Q&A and Chatbot functionality on top.
+- `search.py`: A Streamlit app providing simple Q&A via a search bar to query your knowledge base.
+- `chat.py`: A Streamlit app providing a simple Chatbot via a search bar to query your knowledge base.
 
-どちらのバージョンのアプリも実行するには、サブディレクトリ内のそれぞれのREADME.mdファイルに記載されている指示に従ってください。
+To run either version of the app, please follow the instructions in the respective README.md files in the subdirectories.
 
-## 動作の仕組み
+## How it works
 
-ノートブックは、大まかに以下のような構成になっています：
-- **基礎を固める：** 
-    - ベクターとデータを受け入れるために、ベクターデータベースをセットアップする。
-    - データセットを読み込み、埋め込み用にデータを切り分け、ベクターデータベースに保存する。
-- **製品にする：**
-    - 検索ステップを追加し、ユーザーがクエリを提供すると、最も関連性の高いエントリを返す。
-    - GPT-3を使って検索結果を要約する
-    - この基本的なQ&AアプリをStreamlitでテストしてみる。
-- **堀を作る：**
-    - コンテキストを管理し、ボットと対話するためのアシスタントクラスを作成する。
-    - セマンティック検索のコンテキストを使用して質問に答えるためにチャットボットを使用する
-    - Streamlitでこの基本的なチャットボットのアプリをテストしてみる
+The notebook is the best place to start, and is broadly laid out as follows:
+- **Lay the foundations:**
+    - Set up the vector database to accept vectors and data
+    - Load the dataset, chunk the data up for embedding and store in the vector database
+- **Make it a product:**
+    - Add a retrieval step where users provide queries and we return the most relevant entries
+    - Summarise search results with GPT-3
+    - Test out this basic Q&A app in Streamlit
+- **Build your moat:**
+    - Create an Assistant class to manage context and interact with our bot
+    - Use the Chatbot to answer questions using semantic search context
+    - Test out this basic Chatbot app in Streamlit
 
-ノートブックを実行し、2つのStreamlitアプリを試したら、有用なスニペットを取り出して、独自のQ&Aやチャットアプリケーションを始めることができる状態にあるはずです。
+Once you've run the notebook and tried the two Streamlit apps, you should be in a position to strip out any useful snippets and start your own Q&A or Chat application.
 
-## 制限事項
+## Limitations
 
-- このアプリはベクターデータベースとしてRedisを使用していますが、 `../examples/vector_databases` でハイライトした他の多くのオプションがありますので、必要に応じて使用してください。
-- これはシンプルな出発点です。もし、あなたのユースケースを展開する際に問題が発生した場合、チューニングが必要になるかもしれません（非網羅的なリスト）：
-    - モデルが正確に回答するためのプロンプトとパラメータ
-    - より適切な結果を返すための検索方法
-    - 最も関連性の高いコンテンツを効果的に保存して検索するためのチャンキング/エンベッディングアプローチ
+- This app uses Redis as a vector database, but there are many other options highlighted `../examples/vector_databases` depending on your need.
+- This is a simple starting point - if you hit issues deploying your use case you may need to tune (non-exhaustive list):
+    - The prompt and parameters for the model for it to answer accurately
+    - Your search to return more relevant results
+    - Your chunking/embedding approach to store the most relevant content effectively for retrieval
