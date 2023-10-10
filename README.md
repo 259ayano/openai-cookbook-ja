@@ -13,7 +13,7 @@
 これらの例を実行するには、OpenAI アカウントとAPI キーが必要です。（[無料アカウントを作成](https://beta.openai.com/signup)）  
 ほとんどのコード例は Python で記述されていますが、概念はどの言語でも適用できます。
 
-その他の便利なツール、ガイド、コースについては、[ウェブ上の関連リソース](https://cookbook.openai.com/related_resources)をチェックしてください。
+その他の便利なツール、ガイド、コースについては、[関連リソース](https://cookbook.openai.com/related_resources)をチェックしてください。
 
 ## 貢献する
 
