@@ -17,7 +17,7 @@
 
 ## 貢献する
 
-もしあなたが見てみたい例やガイドがあれば、[issues page]で気軽に提案してください。また、クックブックの範囲に合うものであれば、質の高いプルリクエストを喜んでお受けします。
+もしあなたが見てみたい例やガイドがあれば、[issues page](https://github.com/openai/openai-cookbook/issues) で気軽に提案してください。また、クックブックの範囲に合うものであれば、質の高いプルリクエストを喜んでお受けします。
 
 このリポジトリの内容は、[registry.yaml](/registry.yaml) に基づいて自動的に [cookbook.openai.com](https://cookbook.openai.com) にレンダリングされます。
 新しいサンプルを投稿するときは、[registry.yaml](/registry.yaml)  に新しいエントリを追加して、ウェブサイトにレンダリングされるようにしてください。
