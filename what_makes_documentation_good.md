@@ -6,87 +6,90 @@
 
 上から下まで直線的に読む読者はほとんどいません。 彼らは飛び回って、どの部分が問題を解決するのかを評価しようとします。 検索時間を短縮し、成功の確率を高めるために、ドキュメントを流し読みしやすいものにします。
 
-**コンテンツをタイトル付きのセクションに分割する。** セクションのタイトルは、読者に集中すべきか先に進むべきかを伝える道しるべの役割を果たします。
+**コンテンツをタイトル付きのセクションに分割する。**
+セクションのタイトルは、読者に集中すべきか先に進むべきかを伝える道しるべの役割を果たします。
 
-**抽象的な名詞よりも有益な文章を含むタイトルを優先する。** たとえば、「結果」のようなタイトルを使用すると、読者は実際の結果が何であるかを知るために次のテキストに飛び込む必要があります。 対照的に、「ストリーミングにより最初のトークンまでの時間が 50% 短縮されました」というタイトルを使用すると、続きを読む負担なく、読者に情報が即座に提供されます。
+**抽象的な名詞よりも有益な文章を含むタイトルを優先する。**
+たとえば、「結果」のようなタイトルを使用すると、読者は実際の結果が何であるかを知るために次のテキストに飛び込む必要があります。 対照的に、「ストリーミングにより最初のトークンまでの時間が 50% 短縮されました」というタイトルを使用すると、続きを読む負担なく、読者に情報が即座に提供されます。
 
-**目次をつける。** 目次は、ハッシュマップがリンクリストよりも高速に検索できるのと同じように、読者が情報をより速く見つけるのに役立ちます。目次には、見落とされがちな2つ目の利点もあります。それは、読者にドキュメントに関するヒントを提供し、読む価値があるかどうかを理解するのに役立つということです。
+**目次をつける。**
+目次は、ハッシュマップがリンクリストよりも高速に検索できるのと同じように、読者が情報をより速く見つけるのに役立ちます。目次には、見落とされがちな2つ目の利点もあります。それは、読者にドキュメントに関するヒントを提供し、読む価値があるかどうかを理解するのに役立つということです。
 
-**段落は短くする。**　段落が短いほど、流し読みしやすくなります。 重要なポイントがある場合は、それを一文の段落にまとめて、見逃される可能性を減らしましょう。段落が長いと情報が埋もれてしまう可能性があります。
+**段落は短くする。**
+段落が短いほど、流し読みしやすくなります。 重要なポイントがある場合は、それを一文の段落にまとめて、見逃される可能性を減らしましょう。段落が長いと情報が埋もれてしまう可能性があります。
 
-**独立したプレビューを提供する短いトピック文で段落やセクションを始める。** 流し読みするとき、セクションの最初の単語、最初の行、最初の文に不釣り合いに注目します。 これらの文章は、前のテキストに依存しない方法で書きます。例えば、「これを踏まえて、より高速な方法について話しましょう。」という最初の文を考えてみましょう。この文は、前の段落を読んでいない人には意味がありません。代わりに、単体で理解できるように書きましょう。例えば、「ベクトル データベースは埋め込みの検索を高速化できます。」というように。
+**独立したプレビューを提供する短いトピック文で段落やセクションを始める。**
+流し読みするとき、セクションの最初の単語、最初の行、最初の文に不釣り合いに注目します。 これらの文章は、前のテキストに依存しない方法で書きます。例えば、「これを踏まえて、より高速な方法について話しましょう。」という最初の文を考えてみましょう。この文は、前の段落を読んでいない人には意味がありません。代わりに、単体で理解できるように書きましょう。例えば、「ベクトル データベースは埋め込みの検索を高速化できます。」というように。
 
-**段落やセクションの冒頭には、独立したプレビューを与える短いトピック・センテンスを置く。** 人はスキミングをするとき、セクションの最初の単語、最初の行、最初の文を不釣り合いに見る。これらの文章は、前の文章に依存しないように書きましょう。例えば、"Building on top of this, let's now talk about a faster way. "という最初の文章を考えてみよう。この文章は、前の段落を読んでいない人には無意味でしょう。その代わりに、単体で理解できるように書きましょう。例えば、"Vector databases can speed up embeddings search."（ベクトル・データベースは埋め込み検索をスピードアップできる）。
+**段落やセクションの冒頭には、独立したプレビューを与える短いトピック・センテンスを置く。**
+人はスキミングをするとき、セクションの最初の単語、最初の行、最初の文を不釣り合いに見る。これらの文章は、前の文章に依存しないように書きましょう。例えば、"Building on top of this, let's now talk about a faster way. "という最初の文章を考えてみよう。この文章は、前の段落を読んでいない人には無意味でしょう。その代わりに、単体で理解できるように書きましょう。例えば、"Vector databases can speed up embeddings search."（ベクトル・データベースは埋め込み検索をスピードアップできる）。
 
-**トピック文の先頭にトピック単語を置きます。** 読者は、段落の内容を知るために 1、2 単語読むだけで済む場合に最も効率的に流し読みします。 したがって、トピックセンテンスを書くときは、トピックを文の最後ではなく先頭に置くことを好みます。 たとえば、エンベディング検索に関する長い記事の途中で、ベクトル データベースに関する段落を書いていると想像してください。 「ベクター データベースによりエンベディング検索を高速化できます」と書く代わりに、「ベクター データベースによりエンベディング検索が高速化されます」と書くことをお勧めします。 2 番目の文は、段落の冒頭に段落のトピックが配置されているため、流し読みするのに適しています。
+**トピック文の先頭にトピック単語を置きます。**
+読者は、段落の内容を知るために 1、2 単語読むだけで済む場合に最も効率的に流し読みします。 したがって、トピックセンテンスを書くときは、トピックを文の最後ではなく先頭に置くことを好みます。 たとえば、エンベディング検索に関する長い記事の途中で、ベクトル データベースに関する段落を書いていると想像してください。 「ベクター データベースによりエンベディング検索を高速化できます」と書く代わりに、「ベクター データベースによりエンベディング検索が高速化されます」と書くことをお勧めします。 2 番目の文は、段落の冒頭に段落のトピックが配置されているため、流し読みするのに適しています。
 
-**トピック・センテンスの冒頭にトピック・ワードを置く** 読者は、段落の内容を知るために1、2語読むだけでよいときに、最も効率よく読み飛ばす。したがって、トピック・センテンスを書くときは、トピックを文末ではなく、文頭に置くことを好みます。例えば、エンベッディング検索に関する長い記事の途中で、ベクトルデータベースに関する段落を書いているとします。「エンベッディング検索はベクトルデータベースによってスピードアップできる」と書くよりも、「ベクターデータベースによりエンベッディング検索が高速化される」の方がいいでしょう。2番目の文は、段落の最初に段落のトピックを置くので、読み流し（スキミング）に適しています。
+**トピック・センテンスの冒頭にトピック・ワードを置く**
+読者は、段落の内容を知るために1、2語読むだけでよいときに、最も効率よく読み飛ばす。したがって、トピック・センテンスを書くときは、トピックを文末ではなく、文頭に置くことを好みます。例えば、エンベッディング検索に関する長い記事の途中で、ベクトルデータベースに関する段落を書いているとします。「エンベッディング検索はベクトルデータベースによってスピードアップできる」と書くよりも、「ベクターデータベースによりエンベッディング検索が高速化される」の方がいいでしょう。2番目の文は、段落の最初に段落のトピックを置くので、読み流し（スキミング）に適しています。
 
-**重要な点を前面に置く。** 最も重要な情報を文書やセクションの先頭に置きます。ソクラテス的な大げさな話を書かないでください。結果の前に手順を紹介しないでください。
+**重要な点を前面に置く。**
+最も重要な情報を文書やセクションの先頭に置きます。ソクラテス的な大げさな話を書かないでください。結果の前に手順を紹介しないでください。
 
-**箇条書きと表を使う。** 箇条書きのリストと表を使用すると、ドキュメントをざっと読みやすくなります。頻繁に使用しましょう。
+**箇条書きと表を使う。**
+箇条書きのリストと表を使用すると、ドキュメントをざっと読みやすくなります。頻繁に使用しましょう。
 
-**重要なテキストを太字にする。** 読者が見つけやすいように、重要なテキストを太字にすることを恐れないでください。
+**重要なテキストを太字にする。**
+読者が見つけやすいように、重要なテキストを太字にすることを恐れないでください。
+
+## 上手に書く
+
+下手に書かれた文章は読むのが苦痛です。上手に書くことで読者への負担を最小限に抑えましょう。
+
+**文章はシンプルにする。**
+長い文章を二つに分割する。副詞をカットする。不要な単語やフレーズをカットする。場合によっては命令形を使う。ライティング本に書かれていることを実行してください。
+
+**明確に解析できる文を作成する。**
+たとえば、「文のあるセクションにタイトルを付ける」という文章について考えてみましょう。読者が「タイトル」という単語を読んだとき、脳は「タイトル」が名詞になるのか、動詞になるのか、形容詞になるのかをまだ分かりません。文の残りの部分を解析しながら追跡するのは少し頭を使うし、脳が意味を誤って予測した場合には問題が発生する可能性があります。たとえ長くても、より簡単に解析できる文章を優先します (例:「セクションのタイトルを文として書く」)。同様に、「自転車通行禁止運動通知」のような名詞句は、解析に余分な労力がかかるので避けましょう。
+
+**左に分岐する文は避ける。**
+言語ツリーは、文内で単語が互いにどのように関係しているかを示します。左分岐ツリーでは、右分岐文よりも多くの内容をメモリに保持する必要があります。これは、幅優先検索と深さ優先検索に似ています。左分岐文の例は、「小麦粉、卵、牛乳、バター、そして少量の塩がパンケーキを作るには必要です。」です。この文では、文の終わりに達するまで、「必要」が何につながっているのかわかりません。 読みやすい右分岐バージョンは、「パンケーキを作るには、小麦粉、卵、牛乳、バター、そして少量の塩が必要です。」です。読者が単語をしばらく保持しなければならない文章に注意し、言い換えることができるかどうかを確認してください。
+
+**文全体にわたって、指示代名詞 (例:「これ」) を避ける。**
+たとえば、「前のトピックの説明を基にして、関数呼び出しについて説明しましょう」と言う代わりに、「メッセージの書式設定を基にして、関数呼び出しについて説明しましょう」と言ってみましょう。二番目の文は、読者に前のトピックを思い出す負担を与えないため、理解しやすくなります。 指示代名詞を完全にカットする機会を探してください。たとえば、「関数呼び出しについて話しましょう」などです。
+
+**\*一貫性を保つ。**
+人間の脳は、驚くべきパターン照合能力を持っています。矛盾があると、読者をイライラさせたり注意をそらすことになります。どこでもタイトルケースを使用する場合は、タイトルケースを使用してください。どこでも終端カンマを使用する場合は、終端カンマを使用してください。もしクックブックのすべてのノートブックの名前がアンダースコアと大文字小文字で指定されている場合は、アンダースコアと大文字小文字を使用しまましょう。 読者に「あれ、これは変だな」と思わせるようなことはしないでください。読者が矛盾点ではなく、コンテンツに集中できるようにしましょう。
+
+**読者に自分がどう思うか、何をすべきかを伝えない。**
+「さて今度は関数の呼び出し方を理解したいと思うでしょう」や「次は関数の呼び出し方を学ぶ必要があります」のような文章は避けてください。どちらの例も読者の心境を推測しており、読者を困らせたり、私達の信用を失墜させたりする可能性があります。読者の状態を推測しないような表現を使いましょう。 例: 「関数を呼び出すには、...」
 
 
-### Make docs easy to skim
+## 広く役立つようにする
 
-Few readers read linearly from top to bottom. They’ll jump around, trying to assess which bit solves their problem, if any. To reduce their search time and increase their odds of success, make docs easy to skim.
+ドキュメントを読む人の知識、言語能力、忍耐力のレベルはさまざまです。たとえ経験豊富な開発者を対象にしているとしても、誰にとっても役立つドキュメントを書くように心がけるべきです。
 
-**Split content into sections with titles.** Section titles act as signposts, telling readers whether to focus in or move on.
+**簡単に書く。**
+必要だと思うよりも簡単に物事を説明してください。多くの読者は英語を母国語としていないかもしれません。多くの読者は専門用語について非常に混乱しており、英文の解析に費やす余力はほとんどないかもしれません。簡単に書きましょう。 (ただし、単純化しすぎないでください。)
 
-**Prefer titles with informative sentences over abstract nouns.** For example, if you use a title like “Results”, a reader will need to hop into the following text to learn what the results actually are. In contrast, if you use the title “Streaming reduced time to first token by 50%”, it gives the reader the information immediately, without the burden of an extra hop.
+**略語は避ける。**
+物事を書き出してみましょう。専門家にとってはコストが低く、初心者にとってはメリットが大きいです。IF の代わりに instruction following と記述しましょう。RAG の代わりに、retrieval-augmented generation と書きましょう。(あるいは私の好みの用語では、the search-ask procedure) 
+  
+**潜在的な問題に対する解決策を提供する。**
+たとえ読者の 95% が Python パッケージのインストール方法や環境変数の保存方法を知っていたとしても、積極的に説明する価値はあります。専門家にとって説明を含めることはコストがかからず、読み飛ばすことができます。しかし、説明を省くことは初心者にとってコストがかかります。行き詰まったり、放棄されたりする可能性があります。JavaScript のエキスパートや C++ エンジニアであっても、Python の初心者かもしれないことを忘れないでください。説明が少なすぎるよりは、多すぎる方がいいでしょう。
 
-**Include a table of contents.** Tables of contents help readers find information faster, akin to how hash maps have faster lookups than linked lists. Tables of contents also have a second, oft overlooked benefit: they give readers clues about the doc, which helps them understand if it’s worth reading.
+**具体的で正確な用語を使う。**
+専門用語はよくありません。私たち自身ではなく、その分野に不慣れな人達のためにドキュメントを最適化します。例えば、「プロンプト」と書く代わりに「入力」と書きます。または、「コンテキスト制限」と書く代わりに、「最大トークン制限」と書きます。後者の用語はより自明であり、おそらくベースモデル時代に開発された専門用語よりも良いでしょう。
+ 
+**コード例は一般的でエクスポート可能なものにする。**
+コードのデモでは、依存関係を最小限に抑えるようにしてください。ユーザーに追加のライブラリをインストールさせないでください。異なるページやセクションを行ったり来たりさせないでください。例はシンプルで自己完結型なものにしましょう。
 
-**Keep paragraphs short.** Shorter paragraphs are easier to skim. If you have an essential point, consider putting it in its own one-sentence paragraph to reduce the odds it’s missed. Long paragraphs can bury information.
+**トピックは価値によって優先順位をつける。**
+よくある問題 (トークンの数え方など) をカバーするドキュメントは、稀な問題 (絵文字データベースの最適化方法など) をカバーするドキュメントよりもはるかに価値があります。それに応じて優先順位を付けます。
 
-**Begin paragraphs and sections with short topic sentences that give a standalone preview.** When people skim, they look disproportionately at the first word, first line, and first sentence of a section. Write these sentences in a way that don’t depend on prior text. For example, consider the first sentence “Building on top of this, let’s now talk about a faster way.” This sentence will be meaningless to someone who hasn’t read the prior paragraph. Instead, write it in a way that can understood standalone: e.g., “Vector databases can speed up embeddings search.”
+**悪い習慣を教えない。**
+API キーをコードに保存する必要がない場合は、コードに API キーを保存する例を決して共有しないでください。
 
-**Put topic words at the beginning of topic sentences.** Readers skim most efficiently when they only need to read a word or two to know what a paragraph is about. Therefore, when writing topic sentences, prefer putting the topic at the beginning of the sentence rather than the end. For example, imagine you’re writing a paragraph on vector databases in the middle of a long article on embeddings search. Instead of writing “Embeddings search can be sped up by vector databases” prefer “Vector databases speed up embeddings search.” The second sentence is better for skimming, because it puts the paragraph topic at the beginning of the paragraph.
+**幅広い切り口でトピックを紹介する。**
+たとえば、レコメンダーをプログラムする方法を説明する場合は、YouTube の動画から Amazon の商品、Wikipedia に至るまで、レコメンデーションがウェブ全体に広く普及していることを簡単に述べることから始めることを検討してください。狭いトピックを広い切り口で説明することで、不確かな領域に飛び込む前に安心感を与えることができます。また、文章が良く書けていれば、すでに知っている人でも楽しめるかもしれません。
 
-**Put the takeaways up front.** Put the most important information at the tops of documents and sections. Don’t write a Socratic big build up. Don’t introduce your procedure before your results.
+## 正当な理由がある場合は、これらのルールを破ってください
 
-**Use bullets and tables.** Bulleted lists and tables make docs easier to skim. Use them frequently.
-
-**Bold important text.** Don’t be afraid to bold important text to help readers find it.
-
-### Write well
-
-Badly written text is taxing to read. Minimize the tax on readers by writing well.
-
-**Keep sentences simple.** Split long sentences into two. Cut adverbs. Cut unnecessary words and phrases. Use the imperative mood, if applicable. Do what writing books tell you.
-
-**Write sentences that can be parsed unambiguously.** For example, consider the sentence “Title sections with sentences.” When a reader reads the word “Title”, their brain doesn’t yet know whether “Title” is going to be a noun or verb or adjective. It takes a bit of brainpower to keep track as they parse the rest of the sentence, and can cause a hitch if their brain mispredicted the meaning. Prefer sentences that can be parsed more easily (e.g., “Write section titles as sentences”) even if longer. Similarly, avoid noun phrases like “Bicycle clearance exercise notice” which can take extra effort to parse.
-
-**Avoid left-branching sentences.** Linguistic trees show how words relate to each other in sentences. Left-branching trees require readers to hold more things in memory than right-branching sentences, akin to breadth-first search vs depth-first search. An example of a left-branching sentence is “You need flour, eggs, milk, butter and a dash of salt to make pancakes.” In this sentence you don’t find out what ‘you need’ connects to until you reach the end of the sentence. An easier-to-read right-branching version is “To make pancakes, you need flour, eggs, milk, butter, and a dash of salt.” Watch out for sentences in which the reader must hold onto a word for a while, and see if you can rephrase them.
-
-**Avoid demonstrative pronouns (e.g., “this”), especially across sentences.** For example, instead of saying “Building on our discussion of the previous topic, now let’s discuss function calling” try “Building on message formatting, now let’s discuss function calling.” The second sentence is easier to understand because it doesn’t burden the reader with recalling the previous topic. Look for opportunities to cut demonstrative pronouns altogether: e.g., “Now let’s discuss function calling.”
-
-**\*Be consistent.** Human brains are amazing pattern matchers.\* Inconsistencies will annoy or distract readers. If we use Title Case everywhere, use Title Case. If we use terminal commas everywhere, use terminal commas. If all of the Cookbook notebooks are named with underscores and sentence case, use underscores and sentence case. Don’t do anything that will cause a reader to go ‘huh, that’s weird.’ Help them focus on the content, not its inconsistencies.
-
-**Don’t tell readers what they think or what to do.** Avoid sentences like “Now you probably want to understand how to call a function” or “Next, you’ll need to learn to call a function.” Both examples presume a reader’s state of mind, which may annoy them or burn our credibility. Use phrases that avoid presuming the reader’s state. E.g., “To call a function, …”
-
-### Be broadly helpful
-
-People come to documentation with varying levels of knowledge, language proficiency, and patience. Even if we target experienced developers, we should try to write docs helpful to everyone.
-
-**Write simply.** Explain things more simply than you think you need to. Many readers might not speak English as a first language. Many readers might be really confused about technical terminology and have little excess brainpower to spend on parsing English sentences. Write simply. (But don’t oversimplify.)
-
-**Avoid abbreviations.** Write things out. The cost to experts is low and the benefit to beginners is high. Instead of IF, write instruction following. Instead of RAG, write retrieval-augmented generation (or my preferred term: the search-ask procedure).
-
-**Offer solutions to potential problems.** Even if 95% of our readers know how to install a Python package or save environment variables, it can still be worth proactively explaining it. Including explanations is not costly to experts—they can skim right past them. But excluding explanations is costly to beginners—they might get stuck or even abandon us. Remember that even an expert JavaScript engineer or C++ engineer might be a beginner at Python. Err on explaining too much, rather than too little.
-
-**Prefer terminology that is specific and accurate.** Jargon is bad. Optimize the docs for people new to the field, instead of ourselves. For example, instead of writing “prompt”, write “input.” Or instead of writing “context limit” write “max token limit.” The latter terms are more self-evident, and are probably better than the jargon developed in base model days.
-
-**Keep code examples general and exportable.** In code demonstrations, try to minimize dependencies. Don’t make users install extra libraries. Don’t make them have to refer back and forth between different pages or sections. Try to make examples simple and self-contained.
-
-**Prioritize topics by value.** Documentation that covers common problems—e.g., how to count tokens—is magnitudes more valuable than documentation that covers rare problems—e.g., how to optimize an emoji database. Prioritize accordingly.
-
-**Don’t teach bad habits.** If API keys should not be stored in code, never share an example that stores an API key in code.
-
-**Introduce topics with a broad opening.** For example, if explaining how to program a good recommender, consider opening by briefly mentioning that recommendations are widespread across the web, from YouTube videos to Amazon items to Wikipedia. Grounding a narrow topic with a broad opening can help people feel more secure before jumping into uncertain territory. And if the text is well-written, those who already know it may still enjoy it.
-
-### Break these rules when you have a good reason
-
-Ultimately, do what you think is best. Documentation is an exercise in empathy. Put yourself in the reader’s position, and do what you think will help them the most.
+最終的には、自分が最善だと思うことを実行してください。ドキュメンテーションは共感の訓練です。読者の立場に立って、読者にとって最も役立つと思うことをしましょう。
