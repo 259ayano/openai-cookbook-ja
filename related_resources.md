@@ -1,4 +1,4 @@
-## ウェブ上の関連資料
+# ウェブ上の関連資料
 
 GPT のアウトプットを向上させるために、素晴らしいツールや論文を書いている人々がいます。ここでは、私たちが目にしたクールなものをいくつか紹介します：
 
@@ -32,13 +32,13 @@ GPT のアウトプットを向上させるために、素晴らしいツール�
 - [OpenAI Cookbook: Techniques to improve reliability](techniques_to_improve_reliability.md): 言語モデルをプロンプト化する技術について、少し古い（2022年9月）レビューです。
 - [promptingguide.ai](https://www.promptingguide.ai/): 多くのテクニックを披露するプロンプトエンジニアリングガイドです。
 
-### ビデオ講座
+## ビデオ講座
 
 - [Andrew Ng's DeepLearning.AI](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/): 開発者のためのプロンプトエンジニアリング短期集中講座です。
 - [Andrej Karpathy's Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY): GPTの基礎となる機械学習を詳しく解説します。
 - [Prompt Engineering by DAIR.AI](https://www.youtube.com/watch?v=dOxUroR57xs): プロンプトエンジニアリングの様々なテクニックを1時間のビデオで紹介します。
 
-### 推論力向上のための高度なプロンプトに関する論文
+## 推論力向上のための高度なプロンプトに関する論文
 
 - [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (2022)](https://arxiv.org/abs/2201.11903): 数発のプロンプトで、モデルに段階的に考えさせることで、推理力を向上させる。PaLMの数学の単語問題（GSM8K）のスコアが18%から57%に向上しています。
 - [Self-Consistency Improves Chain of Thought Reasoning in Language Models (2022)](https://arxiv.org/abs/2203.11171): 複数の出力から投票することで、さらに精度が向上します。40の出力から投票することで、PaLMの数学の単語問題のスコアは57%から74%に、`code-davinci-002`は60%から78%にさらに向上しています。
