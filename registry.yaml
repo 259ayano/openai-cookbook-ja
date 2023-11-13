@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=./registry_schema.json
+# yaml-language-server: $schema=./.github/registry_schema.json
 
 # This file is used to generate cookbook.openai.com. It specifies which paths we
 # should build pages for, and indicates metadata such as tags, creation date and
@@ -43,8 +43,8 @@
     - embeddings
     - completions
 
-- title: Code search
-  path: examples/Code_search.ipynb
+- title: Code search using embeddings
+  path: examples/Code_search_using_embeddings.ipynb
   date: 2022-03-10
   authors:
     - BorisPower
@@ -105,9 +105,10 @@
     - prestontuggle
   tags:
     - completions
+    - functions
 
-- title: Get embeddings
-  path: examples/Get_embeddings.ipynb
+- title: Using embeddings
+  path: examples/Using_embeddings.ipynb
   date: 2022-03-10
   authors:
     - BorisPower
@@ -132,6 +133,7 @@
     - joe-at-openai
   tags:
     - completions
+    - functions
 
 - title: How to call functions with chat models
   path: examples/How_to_call_functions_with_chat_models.ipynb
@@ -141,6 +143,7 @@
     - joe-at-openai
   tags:
     - completions
+    - functions
 
 - title: How to count tokens with tiktoken
   path: examples/How_to_count_tokens_with_tiktoken.ipynb
@@ -306,16 +309,16 @@
   tags:
     - embeddings
 
-- title: Visualizing the embeddings in W&B
-  path: examples/Visualizing_embeddings_in_W&B.ipynb
+- title: Visualizing embeddings in Weights and Biases
+  path: examples/third_party/Visualizing_embeddings_in_wandb.ipynb
   date: 2023-02-01
   authors:
     - scottire
   tags:
     - embeddings
 
-- title: Visualizing Open AI Embeddings in Atlas
-  path: examples/Visualizing_embeddings_with_Atlas.ipynb
+- title: Visualizing embeddings in Atlas
+  path: examples/third_party/Visualizing_embeddings_with_Atlas.ipynb
   date: 2023-03-28
   authors:
     - AndriyMulyar
@@ -414,6 +417,7 @@
     - kristapratico
   tags:
     - completions
+    - functions
 
 - title: Translate a book writen in LaTeX from Slovenian into English
   path: examples/book_translation/translate_latex_book.ipynb
@@ -441,7 +445,7 @@
   tags:
     - dall-e
 
-- title: Evaluating Abstractive Summarization
+- title: How to evaluate a summarization task
   path: examples/evaluation/How_to_eval_abstractive_summarization.ipynb
   date: 2023-08-16
   authors:
@@ -482,7 +486,7 @@
     - embeddings
 
 - title: Visualizing the embeddings in Kangas
-  path: examples/third_party_examples/Visualizing_embeddings_in_Kangas.ipynb
+  path: examples/third_party/Visualizing_embeddings_in_Kangas.ipynb
   date: 2023-07-11
   authors:
     - dsblank
@@ -491,7 +495,7 @@
 
 - title: Financial Document Analysis with LlamaIndex
   path: >-
-    examples/third_party_examples/financial_document_analysis_with_llamaindex.ipynb
+    examples/third_party/financial_document_analysis_with_llamaindex.ipynb
   date: 2023-06-22
   authors:
     - Disiok
@@ -928,7 +932,9 @@
     - embeddings
 
 - title: Techniques to improve reliability
-  path: techniques_to_improve_reliability.md
+  path: articles/techniques_to_improve_reliability.md
+  redirects:
+    - techniques_to_improve_reliability
   date: 2022-09-12
   authors:
     - ted-at-openai
@@ -936,7 +942,9 @@
     - completions
 
 - title: How to work with large language models
-  path: how_to_work_with_large_language_models.md
+  path: articles/how_to_work_with_large_language_models.md
+  redirects:
+    - how_to_work_with_large_language_models
   date: 2023-01-20
   authors:
     - ted-at-openai
@@ -944,7 +952,9 @@
     - completions
 
 - title: Use cases for embeddings
-  path: text_comparison_examples.md
+  path: articles/text_comparison_examples.md
+  redirects:
+    - text_comparison_examples
   date: 2023-01-20
   authors:
     - ted-at-openai
@@ -952,7 +962,9 @@
     - embeddings
 
 - title: Related resources from around the web
-  path: related_resources.md
+  path: articles/related_resources.md
+  redirects:
+    - related_resources
   date: 2023-01-20
   authors:
     - ted-at-openai
@@ -971,13 +983,14 @@
     - embeddings
 
 - title: How to automate AWS tasks with function-calling
-  path: examples/third_party_examples/How_to_automate_S3_storage_with_functions.ipynb
+  path: examples/third_party/How_to_automate_S3_storage_with_functions.ipynb
   date: 2023-09-27
   authors:
     - Barqawiz
   tags:
     - completions
     - embeddings
+    - functions
 
 - title: Neon as a vector database
   path: examples/vector_databases/neon/README.md
@@ -1004,7 +1017,7 @@
     - embeddings
 
 - title: Fine-tuning GPT with Weights & Biases
-  path: examples/third_party_examples/GPT_finetuning_with_wandb.ipynb
+  path: examples/third_party/GPT_finetuning_with_wandb.ipynb
   date: 2023-10-04
   authors:
     - ash0ts
@@ -1013,7 +1026,7 @@
     - completions
 
 - title: OpenAI API Monitoring with Weights & Biases Weave
-  path: examples/third_party_examples/Openai_monitoring_with_wandb_weave.ipynb
+  path: examples/third_party/Openai_monitoring_with_wandb_weave.ipynb
   date: 2023-10-04
   authors:
     - ash0ts
@@ -1021,9 +1034,75 @@
     - tiktoken
     - completions
 
+- title: How to build an agent with the Node.js SDK
+  path: examples/How_to_build_an_agent_with_the_node_sdk.mdx
+  date: 2023-10-05
+  authors:
+    - perborgen
+  tags:
+    - completions
+    - functions
+
 - title: What makes documentation good
-  path: what_makes_documentation_good.md
+  path: articles/what_makes_documentation_good.md
+  redirects:
+    - what_makes_documentation_good
   date: 2023-09-01
   authors:
     - ted-at-openai
   tags: []
+
+- title: Function-calling with an OpenAPI specification
+  path: examples/Function_calling_with_an_OpenAPI_spec.ipynb
+  date: 2023-10-15
+  authors:
+    - shyamal-anadkat
+    - simonpfish
+  tags:
+    - completions
+    - functions
+
+- title: Fine tuning for function-calling
+  path: examples/Fine_tuning_for_function_calling.ipynb
+  date: 2023-11-07
+  authors:
+    - jhills20
+    - ibigio
+  tags:
+    - completions
+    - functions
+
+- title: Processing and narrating a video with GPT's visual capabilities and the TTS API
+  path: examples/GPT_with_vision_for_video_understanding.ipynb
+  date: 2023-11-06
+  authors:
+    - cathykc
+  tags:
+    - completions
+    - vision
+    - speech
+
+- title: What's new with DALL·E-3?
+  path: articles/what_is_new_with_dalle_3.mdx
+  date: 2023-11-06
+  authors:
+    - 0hq
+  tags:
+    - dall-e
+
+- title: How to make your completions outputs consistent with the new seed parameter
+  path: examples/Deterministic_outputs_with_the_seed_parameter.ipynb
+  date: 2023-11-06
+  authors:
+    - shyamal-anadkat
+  tags:
+    - completions
+
+- title: Assistants API Overview (Python SDK)
+  path: examples/Assistants_API_overview_python.ipynb
+  date: 2023-11-10
+  authors:
+    - ibigio
+  tags:
+    - assistants
+    - functions
