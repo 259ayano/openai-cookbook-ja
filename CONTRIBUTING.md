@@ -1,46 +1,48 @@
 # Welcome, AI Chef
 
-The OpenAI Cookbook is a community-driven resource aimed at sharing knowledge in a way that is accessible, engaging, and enriching for all AI builders.
+OpenAI Cookbook は、すべての AI ビルダーにとってアクセスしやすく、魅力的で充実した方法で知識を共有することを目的としたコミュニティ主導のリソースです。
 
-Before contributing, read through the existing issues and pull requests to see if someone else is already working on something similar. That way you can avoid duplicating efforts.
+貢献する前に、既存の問題とプルリクエストに目を通し、他の人がすでに同様のことに取り組んでいないかどうかを確認してください。そうすることで、作業の重複を避けることができます。
 
 ## What makes a good contribution?
 
-Generally, we have found that the best contributions to the Cookbook are **useful**, **novel** or **creative**, or a combination of these.
+一般に、Cookbook への最も優れた貢献は、**役に立つ**、**斬新的**、**創造的**、またはこれらの組み合わせであることがわかりました。
 
-- **Useful:** Involves concepts or techniques that can be applied broadly and often, and can translate to practical use-cases and solving real-world problems. If you're doing something often, chances are others are too, and having reusable examples to reference can be very helpful.
-- **Novel:** Showcases new developments or techniques. Look out for new research on how to best use LLMs, or new models and capabilities in the API.
-- **Creative:** Uses LLMs in creative and innovative ways, or combines multiple APIs and tools in novel ways.
+- **役に立つ:** 広く頻繁に適用でき、実際のユースケースや現実世界の問題の解決に応用できる概念やテクニックが含まれています。あなたが何かを頻繁に行っている場合、他の人も頻繁に行っている可能性があり、参照用の再利用可能な例があると非常に役立ちます。
+- **斬新的:** 新しい開発や技術を紹介します。LLM の最適な使用方法に関する新しい研究、または API の新しいモデルや機能に注目してください。
+- **創造的:** 創造的かつ革新的な方法で LLM を使用するか、斬新な方法で複数の API とツールを組み合わせます。
 
-Additionally, we strive to maintain a **neutral** tone, and aim for **high quality** writing.
+さらに、**中立的**なトーンを維持するよう努め、**高品質**な文章を目指します。
 
-- **Neutral:** Maintains a neutral stance on tools and products. While it's natural to have preferences for particular tools, a good guide avoids over-evangelizing or marketing specific products, ensuring integrity and inclusivity.
-- **High quality:** Well structured, clear and complete. Writing good content ensures others can fully benefit from it. See the rubric below for more details on how we assess the quality of submissions to the Cookbook.
+- **中立的:** ツールや製品に対して中立的な立場を維持します。特定のツールに好みがあるのは自然なことですが、優れたガイドは特定の製品の過剰な宣伝やマーケティングを避け、完全性と包括性を確保します。
+- **高品質:** よく構成されており、明確で完全です。優れたコンテンツを書くことで、他の人がそのコンテンツから十分な恩恵を受けることができます。クックブックへの投稿の品質を評価する方法の詳細については、以下のルーブリックを参照してください。
 
 ## Rubric
 
-To ensure the quality of submissions, we have established a rubric that assesses each contribution on various areas. The purpose of this rating system is to maintain a high standard of quality, relevance, and uniqueness. Each area is rated on a scale from 1 to 4. Contributions that score lower than a 3 in any of the areas will generally be rejected.
+提出物の質を保証するために、私たちはさまざまな分野での各貢献を評価するルーブリック（学習の達成度を表を用いて測定する評価方法）を確立しました。
+この評価システムの目的は、高水準の品質、関連性、独自性を維持することです。
+各領域は 1 から 4 のスケールで評価されます。いずれかの領域のスコアが 3 未満の投稿は、通常、拒否されます。
 
-We encourage contributors to familiarize themselves with this rubric before writing content. Understanding the criteria not only increases the chances of your contribution being accepted, but also helps in creating a resource that is comprehensive, clear, and beneficial for all users.
+寄稿者には、コンテンツを作成する前にこのルーブリックをよく理解することをお勧めします。基準を理解することは、あなたの投稿が受け入れられる可能性を高めるだけでなく、包括的で明確で、すべてのユーザーにとって有益なリソースを作成するのにも役立ちます。
 
-For additional advice on writing good documentation, refer to [What Makes Documentation Good](https://cookbook.openai.com/what_makes_documentation_good).
+優れたドキュメントを作成するためのその他のアドバイスについては、[ドキュメントを優れたものにするもの](https://cookbook.openai.com/what_makes_documentation_good) を参照してください。
 
-| Criteria     | Description                                                                                         | Score |
-| ------------ | --------------------------------------------------------------------------------------------------- | ----- |
-| Relevance    | Is the content related to building with OpenAI technologies? Is it useful to others?                |       |
-| Uniqueness   | Does the content offer new insights or unique information compared to existing documentation?       |       |
-| Clarity      | Is the language easy to understand? Are things well-explained? Is the title clear?                  |       |
-| Correctness  | Are the facts, code snippets, and examples correct and reliable? Does everything execute correctly? |       |
-| Completeness | Is the content thorough and detailed? Are there things that weren’t explained fully?                |       |
-| Grammar      | Are there grammatical or spelling errors present?                                                   |       |
+| 基準 | 説明 | スコア |
+| ------------ | ---------------------------------------------------------------------------------------------------- | ----- |
+| 関連性 | コンテンツは OpenAI テクノロジーを使用した構築に関連していますか? それは他の人にとって役に立ちますか? | |
+| 独自性 | コンテンツは既存のドキュメントと比較して新しい洞察や独自の情報を提供しますか? | |
+| 明瞭さ | 言語は理解しやすいですか？ 物事は十分に説明されていますか？ タイトルは分かりやすいですか？ | |
+| 正確さ | 事実、コード スニペット、例は正しく、信頼できるものですか? すべてが正しく実行されますか? | |
+| 完全性 | 内容は綿密かつ詳細ですか? 十分に説明されなかった点はありますか? | |
+| 文法 | 文法的またはスペルの間違いはありますか? | |
 
 ### Breakdown
 
-| Criteria     | 4                                      | 3                                        | 2                                             | 1                                     |
-| ------------ | -------------------------------------- | ---------------------------------------- | --------------------------------------------- | ------------------------------------- |
-| Relevance    | Relevant and useful.                   | Relevant but not very useful.            | Tangentially relevant.                        | Not relevant.                         |
-| Uniqueness   | Completely unique with fresh insights. | Unique with minor overlaps.              | Some unique aspects, but significant overlap. | Many similar guides/examples.         |
-| Clarity      | Clear language and structure.          | Clear language, unclear structure.       | Some sections unclear.                        | Confusing and unclear.                |
-| Correctness  | Completely error free.                 | Code works, minor improvements needed.   | Few errors and warnings.                      | Many errors, code doesn't execute.    |
-| Completeness | Complete and detailed.                 | Mostly complete, minor additions needed. | Lacks some explanations.                      | Missing significant portions.         |
-| Grammar      | Perfect grammar.                       | Correct grammar, few typos.              | Some spelling/grammatical errors.             | Numerous spelling/grammatical errors. |
+| 基準 | 4 | 3 | 2 | 1 |
+| ----- | ----- | ----- | ----- | ----- |
+| 関連性 | 関連性があり、役に立ちます。 | 関連性はありますが、あまり役に立ちません。 | 接線的に関連しています。 | 関係ありません。 |
+| 独自性 | 新鮮な洞察を備えた完全にユニークな内容です。 | わずかな重複がありユニークです。 | いくつかのユニークな側面もありますが、重要な部分は重複しています。 | 同様のガイド/例が多数あります。 |
+| 明瞭さ | 明確な言語と構造。 | 明確な言語、明確な構造。 | 一部のセクションは不明瞭です。 | 紛らわしく、不明瞭です。 |
+| 正確さ | 完全にエラーなし。 | コードは機能しますが、若干の改善が必要です。 | エラーや警告はほとんどありません。 | エラーが多く、コードが実行されません。 |
+| 完全性 | 完全かつ詳細。 | ほぼ完成しましたが、若干の追加が必要です。 | 一部説明が不足しています。 | 重要な部分が欠落しています。 |
+| 文法 | 完璧な文法。 | 文法は正しく、タイプミスはほとんどありません。 | いくつかのスペル/文法の間違い。 | スペル/文法の間違いが多数あります。 |
