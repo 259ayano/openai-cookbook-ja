@@ -17,11 +17,19 @@
 
 ## 貢献する
 
-もしあなたが見てみたい例やガイドがあれば、[issues page](https://github.com/openai/openai-cookbook/issues) で気軽に提案してください。また、クックブックの範囲に合うものであれば、質の高いプルリクエストを喜んでお受けします。
+OpenAI Cookbook はコミュニティ主導のリソースです。アイデアの提出、誤字脱字の修正、新しいガイドの追加、既存のガイドの改善など、あなたの貢献は大歓迎です！
+
+貢献する前に、既存の問題とプルリクエストに目を通し、他の誰かがすでに同様のことに取り組んでいないかどうかを確認してください。そうすることで、作業の重複を避けることができます。
+
+見てみたい例やガイドがあれば、[issues ページ](https://github.com/openai/openai-cookbook/issues) で遠慮なく提案してください。
+
+新しいコンテンツを投稿したい場合は、[投稿ガイドライン](https://github.com/259ayano/openai-cookbook-ja/blob/main/CONTRIBUTING.md)を必ずお読みください。
+私たちの基準を満たし、クックブックの範囲に収まるものであれば、新しいサンプルやガイドの質の高い投稿を歓迎します。
 
 このリポジトリの内容は、[registry.yaml](/registry.yaml) に基づいて自動的に [cookbook.openai.com](https://cookbook.openai.com) にレンダリングされます。
-新しいサンプルを投稿するときは、[registry.yaml](/registry.yaml)  に新しいエントリを追加して、ウェブサイトにレンダリングされるようにしてください。
 
-質の高いコントリビュートを行うためのガイダンスとして、[ドキュメントを良いものにするためのガイド](https://cookbook.openai.com/what_makes_documentation_good) を参照してください。
 
 [![GitHubコードスペースで開く](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main)
+
+
+
