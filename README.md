@@ -23,7 +23,7 @@ OpenAI Cookbook はコミュニティ主導のリソースです。アイデア�
 
 見てみたい例やガイドがあれば、[issues ページ](https://github.com/openai/openai-cookbook/issues) で遠慮なく提案してください。
 
-新しいコンテンツを投稿したい場合は、[投稿ガイドライン](https://github.com/259ayano/openai-cookbook-ja/blob/main/CONTRIBUTING.md)を必ずお読みください。
+新しいコンテンツを投稿したい場合は、[投稿ガイドライン](https://github.com/259ayano/openai-cookbook-ja/blob/master/CONTRIBUTING.md)を必ずお読みください。
 私たちの基準を満たし、クックブックの範囲に収まるものであれば、新しいサンプルやガイドの質の高い投稿を歓迎します。
 
 このリポジトリの内容は、[registry.yaml](/registry.yaml) に基づいて自動的に [cookbook.openai.com](https://cookbook.openai.com) にレンダリングされます。
